@@ -1,8 +1,8 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
 const multer = require('multer');
 const router = express.Router();
+
+const { createCloudinaryStorage } = require('../config/cloudinary');
 
 const {
     createPet,
@@ -16,22 +16,7 @@ const {
 
 const { auth, adminOnly } = require('../middleware/authMiddleware');
 
-const petImageUploadDir = path.join(__dirname, '../../uploads/pet-images');
-const petRecordUploadDir = path.join(__dirname, '../../uploads/pet-records');
-
-fs.mkdirSync(petImageUploadDir, { recursive: true });
-fs.mkdirSync(petRecordUploadDir, { recursive: true });
-
-const petImageStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, petImageUploadDir);
-    },
-    filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname || '') || getExtensionFromMime(file.mimetype);
-
-        cb(null, `${Date.now()}-${Math.round(Math.random() * 1E9)}${ext}`);
-    }
-});
+const petImageStorage = createCloudinaryStorage('pet-images', ['jpg', 'jpeg', 'png', 'webp']);
 
 const uploadPetImage = multer({
     storage: petImageStorage,
@@ -48,16 +33,7 @@ const uploadPetImage = multer({
     }
 });
 
-const petRecordStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, petRecordUploadDir);
-    },
-    filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname || '') || getExtensionFromMime(file.mimetype);
-
-        cb(null, `${Date.now()}-${Math.round(Math.random() * 1E9)}${ext}`);
-    }
-});
+const petRecordStorage = createCloudinaryStorage('pet-records', ['jpg', 'jpeg', 'png', 'webp', 'pdf']);
 
 const uploadPetRecord = multer({
     storage: petRecordStorage,
@@ -103,13 +79,4 @@ function handlePetRecordUpload(req, res, next) {
 
         next();
     });
-}
-
-function getExtensionFromMime(mimeType) {
-    if (mimeType === 'image/jpeg') return '.jpg';
-    if (mimeType === 'image/png') return '.png';
-    if (mimeType === 'image/webp') return '.webp';
-    if (mimeType === 'application/pdf') return '.pdf';
-
-    return '';
 }
