@@ -69,7 +69,7 @@ exports.checkout = async (req, res) => {
                 fileName: req.file.filename,
                 originalName: req.file.originalname,
                 mimeType: req.file.mimetype,
-                url: `/uploads/payment-proofs/${req.file.filename}`
+                url: req.file.path
             } : undefined
         });
 
