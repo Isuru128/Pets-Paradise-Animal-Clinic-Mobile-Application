@@ -33,7 +33,7 @@ exports.createPet = async (req, res) => {
             birthday: birthday || '',
             gender: gender || '',
             medicalNotes: medicalNotes || '',
-            imageUrl: req.file ? `/uploads/pet-images/${req.file.filename}` : imageUrl || '',
+            imageUrl: req.file ? req.file.path : imageUrl || '',
             status: status || 'Healthy'
         });
 
@@ -99,7 +99,7 @@ exports.updatePet = async (req, res) => {
         }
 
         if (req.file) {
-            updates.imageUrl = `/uploads/pet-images/${req.file.filename}`;
+            updates.imageUrl = req.file.path;
         }
 
         const updatedPet = await Pet.findByIdAndUpdate(
@@ -151,7 +151,7 @@ exports.addPetRecord = async (req, res) => {
             category: category || 'Vaccination',
             date: date || '',
             notes: notes || '',
-            attachmentUrl: req.file ? `/uploads/pet-records/${req.file.filename}` : attachmentUrl || '',
+            attachmentUrl: req.file ? req.file.path : attachmentUrl || '',
             attachmentName: req.file ? req.file.originalname : '',
             attachmentMimeType: req.file ? req.file.mimetype : '',
             createdBy: req.user.id
@@ -196,7 +196,7 @@ exports.updatePetRecord = async (req, res) => {
         record.notes = notes || '';
 
         if (req.file) {
-            record.attachmentUrl = `/uploads/pet-records/${req.file.filename}`;
+            record.attachmentUrl = req.file.path;
             record.attachmentName = req.file.originalname;
             record.attachmentMimeType = req.file.mimetype;
         } else if (attachmentUrl !== undefined) {
