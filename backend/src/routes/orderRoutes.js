@@ -1,8 +1,8 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
 const multer = require('multer');
 const router = express.Router();
+
+const { createCloudinaryStorage } = require('../config/cloudinary');
 
 const {
     checkout,
@@ -14,21 +14,7 @@ const {
 
 const { auth, adminOnly } = require('../middleware/authMiddleware');
 
-const proofUploadDir = path.join(__dirname, '../../uploads/payment-proofs');
-
-fs.mkdirSync(proofUploadDir, { recursive: true });
-
-const proofStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, proofUploadDir);
-    },
-    filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname || '');
-        const safeExt = ext || getExtensionFromMime(file.mimetype);
-
-        cb(null, `${Date.now()}-${Math.round(Math.random() * 1E9)}${safeExt}`);
-    }
-});
+const proofStorage = createCloudinaryStorage('payment-proofs', ['jpg', 'jpeg', 'png', 'webp', 'pdf']);
 
 const uploadPaymentProof = multer({
     storage: proofStorage,
@@ -61,13 +47,4 @@ function handlePaymentProofUpload(req, res, next) {
 
         next();
     });
-}
-
-function getExtensionFromMime(mimeType) {
-    if (mimeType === 'image/jpeg') return '.jpg';
-    if (mimeType === 'image/png') return '.png';
-    if (mimeType === 'image/webp') return '.webp';
-    if (mimeType === 'application/pdf') return '.pdf';
-
-    return '';
 }
