@@ -190,6 +190,7 @@ export default function ProfilePage() {
                             value={form.name}
                             onChangeText={(value) => updateForm('name', value)}
                             placeholder="Full Name"
+                            placeholderTextColor="#9ca3af"
                         />
 
                         <FieldLabel label="Mobile Number" />
@@ -198,6 +199,7 @@ export default function ProfilePage() {
                             value={form.phone}
                             onChangeText={updatePhone}
                             placeholder="Mobile Number"
+                            placeholderTextColor="#9ca3af"
                             keyboardType="number-pad"
                             maxLength={10}
                         />
@@ -208,6 +210,7 @@ export default function ProfilePage() {
                             value={form.address}
                             onChangeText={(value) => updateForm('address', value)}
                             placeholder="Shipping Address"
+                            placeholderTextColor="#9ca3af"
                             multiline
                         />
 
@@ -272,6 +275,7 @@ export default function ProfilePage() {
                             value={passwordForm.currentPassword}
                             onChangeText={(value) => updatePasswordForm('currentPassword', value)}
                             placeholder="Current Password"
+                            placeholderTextColor="#9ca3af"
                             secureTextEntry
                         />
 
@@ -281,6 +285,7 @@ export default function ProfilePage() {
                             value={passwordForm.newPassword}
                             onChangeText={(value) => updatePasswordForm('newPassword', value)}
                             placeholder="New Password"
+                            placeholderTextColor="#9ca3af"
                             secureTextEntry
                         />
 
@@ -290,6 +295,7 @@ export default function ProfilePage() {
                             value={passwordForm.confirmPassword}
                             onChangeText={(value) => updatePasswordForm('confirmPassword', value)}
                             placeholder="Confirm New Password"
+                            placeholderTextColor="#9ca3af"
                             secureTextEntry
                         />
 

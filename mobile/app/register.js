@@ -66,6 +66,7 @@ export default function RegisterPage() {
                     key={field.key}
                     style={[styles.input, field.multiline && styles.textArea]}
                     placeholder={field.label}
+                    placeholderTextColor="#9ca3af"
                     value={form[field.key]}
                     onChangeText={(value) => (field.key === 'phone' ? updatePhone(value) : update(field.key, value))}
                     secureTextEntry={field.key.toLowerCase().includes('password')}
