@@ -9,7 +9,7 @@ import {
     View
 } from 'react-native';
 import { useCallback, useState } from 'react';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect } from "expo-router/react-navigation";
 import API from '../../src/services/api';
 
 const statuses = ['Pending', 'Confirmed', 'Completed', 'Cancelled'];
