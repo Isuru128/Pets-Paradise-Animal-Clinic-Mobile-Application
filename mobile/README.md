@@ -3,7 +3,7 @@
 A React Native (Expo) mobile application for the **Pets Paradise Animal Clinic**, enabling pet owners to manage their pets, book appointments, browse the shop, and track orders — all from their phone.
 
 > 🤖 **Install APK on Android**:  
-> Open this link on your Android device (or scan the QR code) to install the app:  
+> Open this link on your Android device to install the app:  
 > 🔗 [https://expo.dev/accounts/isuru128s-team/projects/petsparadise/builds/c4bd14a8-43a6-4db8-85b7-8dc3bb6fc439](https://expo.dev/accounts/isuru128s-team/projects/petsparadise/builds/c4bd14a8-43a6-4db8-85b7-8dc3bb6fc439)
 
 ---
@@ -13,7 +13,7 @@ A React Native (Expo) mobile application for the **Pets Paradise Animal Clinic**
 | Technology | Purpose |
 |---|---|
 | [React Native](https://reactnative.dev/) | Cross-platform mobile framework |
-| [Expo SDK 55](https://expo.dev/) | Managed workflow & native APIs |
+| [Expo SDK 57](https://expo.dev/) | Managed workflow & native APIs |
 | [Expo Router v4](https://docs.expo.dev/router/introduction/) | File-based routing |
 | [Axios](https://axios-http.com/) | HTTP client for API calls |
 | [AsyncStorage](https://react-native-async-storage.github.io/async-storage/) | Local token storage |
