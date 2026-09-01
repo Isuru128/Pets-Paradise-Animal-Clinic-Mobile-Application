@@ -1,50 +1,217 @@
-# Welcome to your Expo app 👋
+# 🐾 Pets Paradise — Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native (Expo) mobile application for the **Pets Paradise Animal Clinic**, enabling pet owners to manage their pets, book appointments, browse the shop, and track orders — all from their phone.
 
-## Get started
+---
 
-1. Install dependencies
+## 📱 Tech Stack
 
-   ```bash
-   npm install
-   ```
+| Technology | Purpose |
+|---|---|
+| [React Native](https://reactnative.dev/) | Cross-platform mobile framework |
+| [Expo SDK 55](https://expo.dev/) | Managed workflow & native APIs |
+| [Expo Router v4](https://docs.expo.dev/router/introduction/) | File-based routing |
+| [Axios](https://axios-http.com/) | HTTP client for API calls |
+| [AsyncStorage](https://react-native-async-storage.github.io/async-storage/) | Local token storage |
+| [React Navigation](https://reactnavigation.org/) | Bottom tabs & stack navigation |
+| [EAS Build](https://docs.expo.dev/build/introduction/) | Cloud build service (APK / IPA) |
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🗂️ Project Structure
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+mobile/
+├── app/                        # File-based routes (Expo Router)
+│   ├── _layout.js              # Root layout (SafeArea + StatusBar)
+│   ├── index.js                # Login screen
+│   ├── register.js             # Registration screen
+│   ├── profile.js              # User profile management
+│   ├── HomeScreen.js           # Home screen
+│   ├── user/                   # Authenticated user screens
+│   │   ├── dashboard.js        # User dashboard
+│   │   ├── pets.js             # Pet management
+│   │   ├── appointments.js     # Appointment booking
+│   │   ├── shop.js             # Product shop
+│   │   ├── cart.js             # Shopping cart
+│   │   ├── checkout.js         # Order checkout
+│   │   └── orders.js           # Order history
+│   └── admin/                  # Admin-only screens
+│       ├── dashboard.js        # Admin dashboard
+│       ├── appointments.js     # Manage appointments
+│       ├── pets.js             # Manage all pets
+│       ├── product.js          # Manage products
+│       ├── inventory.js        # Inventory management
+│       └── orders.js           # Manage orders
+├── src/
+│   ├── services/
+│   │   └── api.js              # Axios instance + auth interceptor
+│   ├── context/
+│   │   └── AuthContext.js      # Authentication state provider
+│   ├── components/             # Reusable UI components
+│   │   ├── CustomButton.js
+│   │   ├── CustomInput.js
+│   │   ├── cards/
+│   │   ├── common/
+│   │   └── home/
+│   ├── data/                   # Static/mock data
+│   └── navigation/             # Navigation helpers
+├── assets/
+│   └── images/                 # App icons, splash screen, etc.
+├── .env                        # Environment variables (not committed)
+├── .env.example                # Environment variable template
+├── app.json                    # Expo app configuration
+├── eas.json                    # EAS Build profiles
+└── package.json
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## ⚙️ Environment Setup
 
-To learn more about developing your project with Expo, look at the following resources:
+### 1. Clone & install dependencies
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+git clone <repo-url>
+cd mobile
+npm install
+```
 
-## Join the community
+### 2. Configure environment variables
 
-Join our community of developers creating universal apps.
+Copy the example env file and set your backend URL:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+cp .env.example .env
+```
+
+Edit `.env`:
+
+```env
+EXPO_PUBLIC_API_URL=https://pets-paradise-mobile-application-ba.vercel.app
+```
+
+> **Note:** The app automatically uses the local dev server URL in development (`__DEV__` mode). The `EXPO_PUBLIC_API_URL` is used for **production/preview builds**.
+
+---
+
+## 🚀 Running Locally
+
+### Start the Expo dev server
+
+```bash
+npx expo start
+```
+
+Then choose one of:
+
+| Option | Command |
+|---|---|
+| Expo Go (phone) | Scan QR code with [Expo Go app](https://expo.dev/go) |
+| Android Emulator | Press `a` in terminal |
+| iOS Simulator (macOS) | Press `i` in terminal |
+| Web browser | Press `w` in terminal |
+
+### Platform-specific shortcuts
+
+```bash
+npm run android   # Open directly on Android emulator
+npm run ios       # Open directly on iOS simulator
+npm run web       # Open in browser
+```
+
+---
+
+## 📦 Building the App (EAS Build)
+
+This project uses [EAS Build](https://docs.expo.dev/build/introduction/) for cloud-based builds. You'll need an [Expo account](https://expo.dev/signup) and EAS CLI installed:
+
+```bash
+npm install -g eas-cli
+eas login
+```
+
+### Build profiles (`eas.json`)
+
+| Profile | Distribution | Notes |
+|---|---|---|
+| `development` | Internal | Includes dev client for debugging |
+| `preview` | Internal | APK/IPA for internal testing |
+| `production` | Store | Auto-increments version; APK for Android |
+
+### Build commands
+
+```bash
+# Development build (with dev client)
+eas build --profile development --platform android
+
+# Preview APK (internal testing)
+eas build --profile preview --platform android
+
+# Production APK
+eas build --profile production --platform android
+
+# iOS builds (requires Apple Developer account)
+eas build --profile production --platform ios
+```
+
+> 💡 **Tip:** For a local Android build without EAS cloud:
+> ```bash
+> npx expo run:android
+> ```
+
+---
+
+## 🔐 Authentication Flow
+
+1. User logs in → JWT token received from backend
+2. Token stored in `AsyncStorage` via `AuthContext`
+3. All API requests automatically attach the token via Axios interceptor in `src/services/api.js`
+4. Role-based routing directs users to `/user/*` or `/admin/*` screens
+
+---
+
+## 🌐 Backend
+
+The mobile app connects to the **Pets Paradise backend** deployed on Vercel:
+
+```
+https://pets-paradise-mobile-application-ba.vercel.app
+```
+
+> The backend handles authentication, pet records, appointments, products, orders, and inventory.
+
+---
+
+## 🔑 Key Features
+
+- 🐶 **Pet Management** — Add, edit, and view pet profiles
+- 📅 **Appointment Booking** — Schedule vet appointments with date/time picker
+- 🛒 **Shop & Cart** — Browse products, add to cart, and checkout
+- 📦 **Order Tracking** — View order history and status
+- 👤 **User Profile** — Manage account details and profile photo
+- 🛡️ **Admin Panel** — Full CRUD for appointments, pets, products, inventory, and orders
+
+---
+
+## 🛠️ Useful Scripts
+
+```bash
+npm run lint          # Run ESLint
+npm run reset-project # Reset to blank app (moves starter code to app-example/)
+```
+
+---
+
+## 📋 Requirements
+
+- Node.js ≥ 18
+- npm ≥ 9
+- Expo CLI / EAS CLI
+- Android Studio (for Android emulator) or Xcode (for iOS simulator, macOS only)
+
+---
+
+## 📄 License
+
+This project is part of the **Pets Paradise Animal Clinic Mobile Application** academic project.
