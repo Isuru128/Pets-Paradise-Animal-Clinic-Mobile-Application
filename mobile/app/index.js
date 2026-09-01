@@ -10,14 +10,18 @@ export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = async () => {
+        if (loading) return;
+
         try {
             if (!email || !password) {
                 Alert.alert('Validation Error', 'Please enter email and password');
                 return;
             }
 
+            setLoading(true);
             const res = await API.post('/auth/login', { email, password });
             const { token, user } = res.data;
 
@@ -31,6 +35,8 @@ export default function LoginPage() {
             }
         } catch (error) {
             Alert.alert('Login Error', error.response?.data?.msg || 'Login failed');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -65,8 +71,8 @@ export default function LoginPage() {
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                <Text style={styles.buttonText}>Login</Text>
+            <TouchableOpacity style={[styles.button, loading && styles.buttonDisabled]} onPress={handleLogin} disabled={loading}>
+                <Text style={styles.buttonText}>{loading ? 'Logging in...' : 'Login'}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => router.push('/register')}>
@@ -85,6 +91,7 @@ const styles = StyleSheet.create({
     passwordInput: { flex: 1, padding: 14 },
     eyeButton: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center' },
     button: { backgroundColor: '#2563eb', padding: 15, borderRadius: 14, alignItems: 'center' },
+    buttonDisabled: { backgroundColor: '#93c5fd' },
     buttonText: { color: '#fff', fontWeight: '800', fontSize: 16 },
     link: { textAlign: 'center', marginTop: 18, color: '#16a34a', fontWeight: '700' }
 });

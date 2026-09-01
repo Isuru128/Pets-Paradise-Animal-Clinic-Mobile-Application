@@ -12,6 +12,7 @@ export default function UserDashboard() {
     const [featuredLoading, setFeaturedLoading] = useState(true);
     const [featuredError, setFeaturedError] = useState('');
     const [upcomingAppointment, setUpcomingAppointment] = useState(null);
+    const [firstPet, setFirstPet] = useState(null);
 
     const loadFeaturedProducts = useCallback(async () => {
         try {
@@ -40,11 +41,21 @@ export default function UserDashboard() {
         }
     }, []);
 
+    const loadFirstPet = useCallback(async () => {
+        try {
+            const res = await API.get('/pets/my-pets');
+            setFirstPet((res.data || [])[0] || null);
+        } catch (_error) {
+            setFirstPet(null);
+        }
+    }, []);
+
     useFocusEffect(
         useCallback(() => {
             loadFeaturedProducts();
             loadUpcomingAppointment();
-        }, [loadFeaturedProducts, loadUpcomingAppointment])
+            loadFirstPet();
+        }, [loadFeaturedProducts, loadUpcomingAppointment, loadFirstPet])
     );
 
     return (
@@ -116,8 +127,16 @@ export default function UserDashboard() {
 
                 <Section title="Pet Records" action="Manage" onPress={() => router.push('/user/pets')} />
                 <View style={styles.infoCard}>
-                    <Text style={styles.infoTitle}>Rocky</Text>
-                    <Text style={styles.infoText}>Dog • 2 years • Healthy</Text>
+                    {firstPet ? (
+                        <>
+                            <Text style={styles.infoTitle}>{firstPet.name}</Text>
+                            <Text style={styles.infoText}>
+                                {[firstPet.type, firstPet.breed, firstPet.gender].filter(Boolean).join(' • ')}
+                            </Text>
+                        </>
+                    ) : (
+                        <Text style={styles.infoText}>No pet profiles yet. Add your first pet!</Text>
+                    )}
                 </View>
             </ScrollView>
         </View>
