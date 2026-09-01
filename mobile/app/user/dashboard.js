@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, View, Text, ScrollView, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect } from "expo-router/react-navigation";
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import API, { API_URL } from '../../src/services/api';
 
