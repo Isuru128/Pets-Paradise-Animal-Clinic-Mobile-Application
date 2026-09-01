@@ -88,7 +88,7 @@ cp .env.example .env
 Edit `.env`:
 
 ```env
-EXPO_PUBLIC_API_URL=https://pets-paradise-mobile-application-ba.vercel.app
+EXPO_PUBLIC_API_URL=https://pets-paradise-mobile-application-ba.vercel.app/api
 ```
 
 > **Note:** The app automatically uses the local dev server URL in development (`__DEV__` mode). The `EXPO_PUBLIC_API_URL` is used for **production/preview builds**.
