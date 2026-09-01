@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Pets Paradise",
-    "slug": "mobile",
+    "slug": "petsparadise",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
