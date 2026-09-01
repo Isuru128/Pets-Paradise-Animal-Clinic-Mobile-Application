@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 // REGISTER USER
 exports.register = async (req, res) => {
     try {
-        const { name, email, password, phone, address, role, adminSecret } = req.body;
+        const { name, email, password, phone, address, role } = req.body;
         const mobileNumber = String(phone || '').replace(/\D/g, '');
 
         if (!name || !email || !password || !mobileNumber) {
@@ -33,19 +33,13 @@ exports.register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Allow admin role only when the correct adminSecret is provided
-        const assignedRole =
-            role === 'admin' && adminSecret && adminSecret === process.env.ADMIN_PROMOTE_SECRET
-                ? 'admin'
-                : 'user';
-
         const user = await User.create({
             name,
             email: email.toLowerCase(),
             password: hashedPassword,
             phone: mobileNumber,
             address: address || '',
-            role: assignedRole
+            role: role === 'admin' ? 'admin' : 'user'
         });
 
         res.status(201).json({
