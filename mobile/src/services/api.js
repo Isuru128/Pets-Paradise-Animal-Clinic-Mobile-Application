@@ -1,7 +1,9 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const API_URL = process.env.EXPO_PUBLIC_API_URL;
+const rawUrl = (process.env.EXPO_PUBLIC_API_URL || 'https://pets-paradise-mobile-application-ba.vercel.app').trim();
+const cleanUrl = rawUrl.replace(/\/+$/, '');
+export const API_URL = cleanUrl.endsWith('/api') ? cleanUrl : `${cleanUrl}/api`;
 
 const API = axios.create({
     baseURL: API_URL
