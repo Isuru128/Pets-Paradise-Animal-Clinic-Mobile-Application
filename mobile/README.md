@@ -2,6 +2,10 @@
 
 A React Native (Expo) mobile application for the **Pets Paradise Animal Clinic**, enabling pet owners to manage their pets, book appointments, browse the shop, and track orders — all from their phone.
 
+> 🤖 **Install APK on Android**:  
+> Open this link on your Android device (or scan the QR code) to install the app:  
+> 🔗 [https://expo.dev/accounts/isuru128s-team/projects/petsparadise/builds/c4bd14a8-43a6-4db8-85b7-8dc3bb6fc439](https://expo.dev/accounts/isuru128s-team/projects/petsparadise/builds/c4bd14a8-43a6-4db8-85b7-8dc3bb6fc439)
+
 ---
 
 ## 📱 Tech Stack
@@ -155,10 +159,10 @@ eas build --profile production --platform android
 eas build --profile production --platform ios
 ```
 
-> 💡 **Tip:** For a local Android build without EAS cloud:
-> ```bash
-> npx expo run:android
-> ```
+### Latest Android Build (APK)
+
+🤖 Open this link on your Android devices (or scan the QR code) to install the app:  
+👉 **[Download Pets Paradise APK](https://expo.dev/accounts/isuru128s-team/projects/petsparadise/builds/c4bd14a8-43a6-4db8-85b7-8dc3bb6fc439)**
 
 ---
 
