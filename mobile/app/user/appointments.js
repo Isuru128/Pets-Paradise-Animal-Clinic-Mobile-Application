@@ -184,9 +184,11 @@ export default function AppointmentsPage() {
 
             <View style={styles.formCard}>
                 <Text style={styles.sectionTitle}>Book Appointment</Text>
+                <Text style={styles.fieldLabel}>Pet Name <Text style={styles.requiredStar}>*</Text></Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Pet Name"
+                    placeholder="e.g. Bella"
+                    placeholderTextColor="#9ca3af"
                     value={form.petName}
                     onChangeText={(value) => updateForm('petName', value)}
                 />
@@ -203,15 +205,20 @@ export default function AppointmentsPage() {
                     ))}
                 </View>
                 {form.reason === 'Other' ? (
-                    <TextInput
-                        style={[styles.input, styles.textArea]}
-                        placeholder="Type appointment reason"
-                        value={form.customReason}
-                        onChangeText={(value) => updateForm('customReason', value)}
-                        multiline
-                    />
+                    <>
+                        <Text style={styles.fieldLabel}>Other Reason Details</Text>
+                        <TextInput
+                            style={[styles.input, styles.textArea]}
+                            placeholder="Type appointment reason"
+                            placeholderTextColor="#9ca3af"
+                            value={form.customReason}
+                            onChangeText={(value) => updateForm('customReason', value)}
+                            multiline
+                        />
+                    </>
                 ) : null}
 
+                <Text style={styles.fieldLabel}>Appointment Date <Text style={styles.requiredStar}>*</Text></Text>
                 <TouchableOpacity style={styles.dateInput} onPress={() => setShowDatePicker(true)}>
                     <Text style={styles.dateText}>{form.date}</Text>
                     <Ionicons name="calendar-outline" size={20} color="#6b7280" />
@@ -491,8 +498,9 @@ const styles = StyleSheet.create({
     sessionTime: { color: '#6b7280', marginTop: 2 },
     formCard: { backgroundColor: '#fff', borderRadius: 18, padding: 16, marginBottom: 16 },
     sectionTitle: { fontSize: 18, fontWeight: '900', color: '#111827', marginBottom: 12 },
-    fieldLabel: { color: '#374151', fontWeight: '900', marginBottom: 10 },
-    input: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 14, padding: 13, marginBottom: 12, backgroundColor: '#fff' },
+    fieldLabel: { color: '#374151', fontWeight: '900', marginBottom: 8, marginTop: 4 },
+    requiredStar: { color: '#dc2626' },
+    input: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 14, padding: 13, marginBottom: 12, backgroundColor: '#fff', fontSize: 15, color: '#111827' },
     textArea: { minHeight: 76, textAlignVertical: 'top' },
     reasonGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 12 },
     reasonButton: { borderWidth: 1, borderColor: '#d1d5db', borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9 },

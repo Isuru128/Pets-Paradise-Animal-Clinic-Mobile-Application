@@ -104,6 +104,7 @@ export default function AdminPetsPage() {
                 <TextInput
                     style={styles.searchInput}
                     placeholder="Search by pet, owner, or mobile"
+                    placeholderTextColor="#9ca3af"
                     value={searchQuery}
                     onChangeText={setSearchQuery}
                 />

@@ -278,6 +278,7 @@ export default function CheckoutPage() {
                                 useProfileAddress && styles.inputDisabled
                             ]}
                             placeholder="Shipping Address"
+                            placeholderTextColor="#9ca3af"
                             value={shippingAddress}
                             onChangeText={setShippingAddress}
                             editable={!useProfileAddress}
@@ -305,7 +306,8 @@ export default function CheckoutPage() {
                                 styles.input,
                                 useProfileMobile && styles.inputDisabled
                             ]}
-                            placeholder="Mobile Number"
+                            placeholder="10-digit mobile number"
+                            placeholderTextColor="#9ca3af"
                             value={mobileNumber}
                             onChangeText={updateMobileNumber}
                             editable={!useProfileMobile}
@@ -347,38 +349,52 @@ export default function CheckoutPage() {
 
                         {paymentMethod === 'Debit Card' ? (
                             <View style={styles.cardFields}>
+                                <Text style={styles.inputLabel}>Cardholder Name</Text>
                                 <TextInput
                                     style={styles.input}
-                                    placeholder="Cardholder Name"
+                                    placeholder="e.g. John Doe"
+                                    placeholderTextColor="#9ca3af"
                                     value={cardDetails.cardName}
                                     onChangeText={(value) => updateCardDetails('cardName', value)}
                                 />
+
+                                <Text style={styles.inputLabel}>Card Number</Text>
                                 <TextInput
                                     style={styles.input}
-                                    placeholder="Debit Card Number"
+                                    placeholder="16-digit card number"
+                                    placeholderTextColor="#9ca3af"
                                     value={cardDetails.cardNumber}
                                     onChangeText={(value) => updateCardDetails('cardNumber', value)}
                                     keyboardType="number-pad"
                                     maxLength={19}
                                 />
+
                                 <View style={styles.cardFieldRow}>
-                                    <TextInput
-                                        style={[styles.input, styles.halfInput]}
-                                        placeholder="MM/YY"
-                                        value={cardDetails.expiry}
-                                        onChangeText={updateExpiry}
-                                        keyboardType="number-pad"
-                                        maxLength={5}
-                                    />
-                                    <TextInput
-                                        style={[styles.input, styles.halfInput]}
-                                        placeholder="CVV"
-                                        value={cardDetails.cvv}
-                                        onChangeText={(value) => updateCardDetails('cvv', value)}
-                                        keyboardType="number-pad"
-                                        secureTextEntry
-                                        maxLength={3}
-                                    />
+                                    <View style={styles.halfInput}>
+                                        <Text style={styles.inputLabel}>Expiry</Text>
+                                        <TextInput
+                                            style={styles.input}
+                                            placeholder="MM/YY"
+                                            placeholderTextColor="#9ca3af"
+                                            value={cardDetails.expiry}
+                                            onChangeText={updateExpiry}
+                                            keyboardType="number-pad"
+                                            maxLength={5}
+                                        />
+                                    </View>
+                                    <View style={styles.halfInput}>
+                                        <Text style={styles.inputLabel}>CVV</Text>
+                                        <TextInput
+                                            style={styles.input}
+                                            placeholder="3-digit"
+                                            placeholderTextColor="#9ca3af"
+                                            value={cardDetails.cvv}
+                                            onChangeText={(value) => updateCardDetails('cvv', value)}
+                                            keyboardType="number-pad"
+                                            secureTextEntry
+                                            maxLength={3}
+                                        />
+                                    </View>
                                 </View>
                             </View>
                         ) : null}
@@ -599,8 +615,14 @@ const styles = StyleSheet.create({
     checkBoxActive: { backgroundColor: '#2563eb', borderColor: '#2563eb' },
     chooseTextWrap: { flex: 1 },
     chooseTitle: { fontWeight: '900', color: '#111827' },
-    chooseHint: { color: '#6b7280', marginTop: 3 },
-    input: { backgroundColor: '#fff', borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 14, padding: 14, marginBottom: 14 },
+    inputLabel: {
+        fontSize: 13,
+        fontWeight: '700',
+        color: '#374151',
+        marginBottom: 6,
+        marginTop: 4
+    },
+    input: { backgroundColor: '#fff', borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 14, padding: 14, marginBottom: 14, fontSize: 15, color: '#111827' },
     inputDisabled: { backgroundColor: '#f3f4f6', color: '#6b7280' },
     addressInput: { minHeight: 45, textAlignVertical: 'top' },
     paymentSelect: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 14, padding: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },

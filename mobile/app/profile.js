@@ -278,6 +278,14 @@ export default function ProfilePage() {
                             placeholderTextColor="#9ca3af"
                             secureTextEntry
                         />
+                        {passwordForm.currentPassword.length > 0 ? (
+                            <View style={styles.passwordInfoRow}>
+                                <Text style={styles.asteriskPreview}>{'* '.repeat(passwordForm.currentPassword.length).trim()}</Text>
+                                <Text style={styles.passwordCounter}>
+                                    {passwordForm.currentPassword.length} {passwordForm.currentPassword.length === 1 ? 'digit' : 'digits'} entered
+                                </Text>
+                            </View>
+                        ) : null}
 
                         <FieldLabel label="New Password" />
                         <TextInput
@@ -288,6 +296,14 @@ export default function ProfilePage() {
                             placeholderTextColor="#9ca3af"
                             secureTextEntry
                         />
+                        {passwordForm.newPassword.length > 0 ? (
+                            <View style={styles.passwordInfoRow}>
+                                <Text style={styles.asteriskPreview}>{'* '.repeat(passwordForm.newPassword.length).trim()}</Text>
+                                <Text style={styles.passwordCounter}>
+                                    {passwordForm.newPassword.length} {passwordForm.newPassword.length === 1 ? 'digit' : 'digits'} entered
+                                </Text>
+                            </View>
+                        ) : null}
 
                         <FieldLabel label="Confirm New Password" />
                         <TextInput
@@ -298,6 +314,16 @@ export default function ProfilePage() {
                             placeholderTextColor="#9ca3af"
                             secureTextEntry
                         />
+                        {passwordForm.confirmPassword.length > 0 ? (
+                            <View style={styles.passwordInfoRow}>
+                                <Text style={styles.asteriskPreview}>{'* '.repeat(passwordForm.confirmPassword.length).trim()}</Text>
+                                <Text style={styles.passwordCounter}>
+                                    {passwordForm.newPassword === passwordForm.confirmPassword
+                                        ? `✓ Match (${passwordForm.confirmPassword.length} digits)`
+                                        : `✕ Doesn't match (${passwordForm.confirmPassword.length} digits)`}
+                                </Text>
+                            </View>
+                        ) : null}
 
                         <View style={styles.editActions}>
                             <TouchableOpacity
@@ -411,6 +437,25 @@ const styles = StyleSheet.create({
     securityActionTitle: { color: '#111827', fontWeight: '900', fontSize: 16 },
     securityActionSubtitle: { color: '#6b7280', marginTop: 3, lineHeight: 18 },
     passwordForm: { marginTop: 16, borderTopWidth: 1, borderTopColor: '#f3f4f6', paddingTop: 16 },
+    passwordInfoRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop: -6,
+        marginBottom: 12,
+        paddingHorizontal: 4
+    },
+    asteriskPreview: {
+        fontSize: 16,
+        fontWeight: '900',
+        letterSpacing: 2,
+        color: '#2563eb'
+    },
+    passwordCounter: {
+        fontSize: 12,
+        fontWeight: '700',
+        color: '#6b7280'
+    },
     logout: { backgroundColor: '#dc2626', padding: 15, borderRadius: 14, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 },
     logoutText: { color: '#fff', fontWeight: '900' }
 });

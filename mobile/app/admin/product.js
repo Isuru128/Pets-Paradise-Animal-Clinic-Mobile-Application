@@ -223,50 +223,70 @@ export default function AdminProductsPage() {
                         </TouchableOpacity>
                     </View>
 
+                    <Text style={styles.inputLabel}>SKU (001-999) <Text style={styles.requiredStar}>*</Text></Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="SKU (001-999)"
+                        placeholder="e.g. 001"
+                        placeholderTextColor="#9ca3af"
                         value={form.sku}
                         onChangeText={(value) => updateForm('sku', value.replace(/\D/g, '').slice(0, 3))}
                         keyboardType="number-pad"
                         maxLength={3}
                     />
+
+                    <Text style={styles.inputLabel}>Product Name <Text style={styles.requiredStar}>*</Text></Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="Product Name"
+                        placeholder="e.g. Pedigree Dog Food"
+                        placeholderTextColor="#9ca3af"
                         value={form.name}
                         onChangeText={(value) => updateForm('name', value)}
                     />
+
+                    <Text style={styles.inputLabel}>Category <Text style={styles.requiredStar}>*</Text></Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="Category"
+                        placeholder="e.g. Food, Medicine, Accessories"
+                        placeholderTextColor="#9ca3af"
                         value={form.category}
                         onChangeText={(value) => updateForm('category', value)}
                     />
+
+                    <Text style={styles.inputLabel}>Description</Text>
                     <TextInput
                         style={[styles.input, styles.textArea]}
-                        placeholder="Description"
+                        placeholder="Detailed description of the product"
+                        placeholderTextColor="#9ca3af"
                         value={form.description}
                         onChangeText={(value) => updateForm('description', value)}
                         multiline
                     />
+
+                    <Text style={styles.inputLabel}>Price (LKR) <Text style={styles.requiredStar}>*</Text></Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="Price"
+                        placeholder="e.g. 2500"
+                        placeholderTextColor="#9ca3af"
                         value={form.price}
                         onChangeText={(value) => updateForm('price', value)}
                         keyboardType="numeric"
                     />
+
+                    <Text style={styles.inputLabel}>Stock Quantity <Text style={styles.requiredStar}>*</Text></Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="Stock"
+                        placeholder="e.g. 25"
+                        placeholderTextColor="#9ca3af"
                         value={form.stock}
                         onChangeText={(value) => updateForm('stock', value)}
                         keyboardType="numeric"
                     />
+
+                    <Text style={styles.inputLabel}>Product Image URL</Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="Product Image"
+                        placeholder="https://example.com/image.jpg"
+                        placeholderTextColor="#9ca3af"
                         value={form.imageUrl}
                         onChangeText={(value) => updateForm('imageUrl', value)}
                         autoCapitalize="none"
@@ -311,6 +331,7 @@ export default function AdminProductsPage() {
                     <TextInput
                         style={styles.searchInput}
                         placeholder="Search by product name or SKU"
+                        placeholderTextColor="#9ca3af"
                         value={productSearch}
                         onChangeText={setProductSearch}
                     />
@@ -552,7 +573,26 @@ const styles = StyleSheet.create({
     formTitle: { fontSize: 18, fontWeight: '900' },
     closeFormButton: { width: 34, height: 34, borderRadius: 12, backgroundColor: '#f3f4f6', alignItems: 'center', justifyContent: 'center' },
     form: { backgroundColor: '#fff', padding: 16, borderRadius: 18, marginBottom: 18 },
-    input: { borderWidth: 1, borderColor: '#e5e7eb', padding: 12, borderRadius: 12, marginBottom: 12 },
+    inputLabel: {
+        fontSize: 13,
+        fontWeight: '700',
+        color: '#374151',
+        marginBottom: 6,
+        marginTop: 4
+    },
+    requiredStar: {
+        color: '#dc2626'
+    },
+    input: {
+        backgroundColor: '#ffffff',
+        borderWidth: 1,
+        borderColor: '#e5e7eb',
+        padding: 12,
+        borderRadius: 12,
+        marginBottom: 12,
+        fontSize: 15,
+        color: '#111827'
+    },
     textArea: { minHeight: 84, textAlignVertical: 'top' },
     switchRow: {
         flexDirection: 'row',

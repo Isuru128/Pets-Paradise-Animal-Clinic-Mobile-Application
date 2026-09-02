@@ -276,16 +276,19 @@ export default function PetProfileCard({
                         ))}
                     </ScrollView>
 
+                    <Text style={styles.inputLabel}>Record Subtitle</Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="Subtitle (optional)"
+                        placeholder="e.g. Annual booster or routine checkup"
+                        placeholderTextColor="#9ca3af"
                         value={recordForm.subtitle}
                         onChangeText={(value) => updateRecordForm('subtitle', value)}
                     />
 
+                    <Text style={styles.inputLabel}>Record Date</Text>
                     <TouchableOpacity style={styles.dateInput} onPress={() => setShowRecordDatePicker(true)}>
                         <Text style={recordForm.date ? styles.dateText : styles.datePlaceholder}>
-                            {recordForm.date || 'Record Date'}
+                            {recordForm.date || 'Select record date'}
                         </Text>
                         <Ionicons name="calendar-outline" size={20} color="#6b7280" />
                     </TouchableOpacity>
@@ -310,9 +313,11 @@ export default function PetProfileCard({
                         />
                     ) : null}
 
+                    <Text style={styles.inputLabel}>Notes</Text>
                     <TextInput
                         style={[styles.input, styles.textArea]}
-                        placeholder="Notes"
+                        placeholder="Diagnosis, treatment, doctor instructions..."
+                        placeholderTextColor="#9ca3af"
                         value={recordForm.notes}
                         onChangeText={(value) => updateRecordForm('notes', value)}
                         multiline
@@ -494,7 +499,23 @@ const styles = StyleSheet.create({
     recordForm: { borderTopWidth: 1, borderTopColor: '#e5e7eb', marginTop: 10, paddingTop: 12 },
     formHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 },
     closeButton: { width: 32, height: 32, borderRadius: 12, backgroundColor: '#f3f4f6', alignItems: 'center', justifyContent: 'center' },
-    input: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, padding: 12, marginBottom: 12 },
+    inputLabel: {
+        fontSize: 13,
+        fontWeight: '700',
+        color: '#374151',
+        marginBottom: 6,
+        marginTop: 4
+    },
+    input: {
+        backgroundColor: '#ffffff',
+        borderWidth: 1,
+        borderColor: '#e5e7eb',
+        borderRadius: 12,
+        padding: 12,
+        marginBottom: 12,
+        fontSize: 15,
+        color: '#111827'
+    },
     dateInput: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, padding: 12, marginBottom: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
     dateText: { color: '#111827' },
     datePlaceholder: { color: '#9ca3af' },

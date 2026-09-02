@@ -253,13 +253,37 @@ export default function PetsPage() {
                         </View>
                     </View>
 
-                    <TextInput style={styles.input} placeholder="Pet Name" value={form.name} onChangeText={(value) => updateForm('name', value)} />
-                    <TextInput style={styles.input} placeholder="Pet Type, e.g. Dog or Cat" value={form.type} onChangeText={(value) => updateForm('type', value)} />
-                    <TextInput style={styles.input} placeholder="Breed" value={form.breed} onChangeText={(value) => updateForm('breed', value)} />
+                    <Text style={styles.inputLabel}>Pet Name <Text style={styles.requiredStar}>*</Text></Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="e.g. Buddy"
+                        placeholderTextColor="#9ca3af"
+                        value={form.name}
+                        onChangeText={(value) => updateForm('name', value)}
+                    />
 
+                    <Text style={styles.inputLabel}>Pet Type <Text style={styles.requiredStar}>*</Text></Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="e.g. Dog or Cat"
+                        placeholderTextColor="#9ca3af"
+                        value={form.type}
+                        onChangeText={(value) => updateForm('type', value)}
+                    />
+
+                    <Text style={styles.inputLabel}>Breed</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="e.g. Golden Retriever"
+                        placeholderTextColor="#9ca3af"
+                        value={form.breed}
+                        onChangeText={(value) => updateForm('breed', value)}
+                    />
+
+                    <Text style={styles.inputLabel}>Birthday <Text style={styles.requiredStar}>*</Text></Text>
                     <TouchableOpacity style={styles.dateInput} onPress={() => setShowBirthdayPicker(true)}>
                         <Text style={form.birthday ? styles.dateText : styles.datePlaceholder}>
-                            {form.birthday || 'Birthday'}
+                            {form.birthday || 'Select pet birthday'}
                         </Text>
                         <Ionicons name="calendar-outline" size={20} color="#6b7280" />
                     </TouchableOpacity>
@@ -284,10 +308,20 @@ export default function PetsPage() {
                         />
                     ) : null}
 
-                    <TextInput style={styles.input} placeholder="Gender" value={form.gender} onChangeText={(value) => updateForm('gender', value)} />
+                    <Text style={styles.inputLabel}>Gender</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="e.g. Male or Female"
+                        placeholderTextColor="#9ca3af"
+                        value={form.gender}
+                        onChangeText={(value) => updateForm('gender', value)}
+                    />
+
+                    <Text style={styles.inputLabel}>Medical Notes or Allergies</Text>
                     <TextInput
                         style={[styles.input, styles.textArea]}
-                        placeholder="Medical notes or allergies"
+                        placeholder="Any known allergies, vaccine history, or medical notes"
+                        placeholderTextColor="#9ca3af"
                         value={form.medicalNotes}
                         onChangeText={(value) => updateForm('medicalNotes', value)}
                         multiline
@@ -426,7 +460,26 @@ const styles = StyleSheet.create({
     formHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 },
     formTitle: { fontSize: 18, fontWeight: '900' },
     closeFormButton: { width: 32, height: 32, borderRadius: 12, backgroundColor: '#f3f4f6', alignItems: 'center', justifyContent: 'center' },
-    input: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, padding: 12, marginBottom: 12 },
+    inputLabel: {
+        fontSize: 13,
+        fontWeight: '700',
+        color: '#374151',
+        marginBottom: 6,
+        marginTop: 4
+    },
+    requiredStar: {
+        color: '#dc2626'
+    },
+    input: {
+        backgroundColor: '#ffffff',
+        borderWidth: 1,
+        borderColor: '#e5e7eb',
+        borderRadius: 12,
+        padding: 12,
+        marginBottom: 12,
+        fontSize: 15,
+        color: '#111827'
+    },
     dateInput: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, padding: 12, marginBottom: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
     dateText: { color: '#111827' },
     datePlaceholder: { color: '#9ca3af' },
