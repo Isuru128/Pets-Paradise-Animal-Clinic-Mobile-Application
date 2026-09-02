@@ -10,7 +10,6 @@ export default function RegisterPage() {
         name: '',
         email: '',
         phone: '',
-        address: '',
         password: '',
         confirmPassword: ''
     });
@@ -41,7 +40,6 @@ export default function RegisterPage() {
                 name: form.name,
                 email: form.email,
                 phone: form.phone,
-                address: form.address,
                 password: form.password
             });
 
@@ -63,7 +61,6 @@ export default function RegisterPage() {
                 { key: 'name', label: 'Full Name', placeholder: 'e.g. John Doe', required: true },
                 { key: 'email', label: 'Email', placeholder: 'e.g. john@example.com', keyboardType: 'email-address', required: true },
                 { key: 'phone', label: 'Mobile Number', placeholder: '10-digit mobile number', keyboardType: 'number-pad', maxLength: 10, required: true },
-                { key: 'address', label: 'Default Address', placeholder: 'Shipping or home address', multiline: true, required: false },
                 { key: 'password', label: 'Password', placeholder: 'Enter password', required: true },
                 { key: 'confirmPassword', label: 'Confirm Password', placeholder: 'Re-enter password', required: true }
             ].map((field) => (
