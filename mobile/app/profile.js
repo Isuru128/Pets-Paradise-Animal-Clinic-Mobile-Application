@@ -209,7 +209,7 @@ export default function ProfilePage() {
                             style={[styles.input, styles.textArea]}
                             value={form.address}
                             onChangeText={(value) => updateForm('address', value)}
-                            placeholder="Shipping Address"
+                            placeholder="Enter delivery/shipping address for orders"
                             placeholderTextColor="#9ca3af"
                             multiline
                         />
