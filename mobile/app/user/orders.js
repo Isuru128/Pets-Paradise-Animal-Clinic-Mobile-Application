@@ -1,6 +1,7 @@
 import {
     ActivityIndicator,
     Alert,
+    BackHandler,
     FlatList,
     Linking,
     StyleSheet,
@@ -9,10 +10,13 @@ import {
     View
 } from 'react-native';
 import { useCallback, useState } from 'react';
+import { useRouter } from 'expo-router';
 import { useFocusEffect } from "expo-router/react-navigation";
+import { Ionicons } from '@expo/vector-icons';
 import API, { API_URL } from '../../src/services/api';
 
 export default function OrdersPage() {
+    const router = useRouter();
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -31,13 +35,33 @@ export default function OrdersPage() {
     useFocusEffect(
         useCallback(() => {
             loadOrders();
-        }, [])
+
+            const onBackPress = () => {
+                if (router.canGoBack()) {
+                    router.back();
+                } else {
+                    router.replace('/user/dashboard');
+                }
+                return true;
+            };
+
+            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+            return () => subscription.remove();
+        }, [router])
     );
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.title}>My Orders</Text>
+                <View style={styles.headerLeft}>
+                    <TouchableOpacity
+                        style={styles.backButton}
+                        onPress={() => (router.canGoBack() ? router.back() : router.replace('/user/dashboard'))}
+                    >
+                        <Ionicons name="arrow-back" size={24} color="#111827" />
+                    </TouchableOpacity>
+                    <Text style={styles.title}>My Orders</Text>
+                </View>
                 <TouchableOpacity onPress={loadOrders}>
                     <Text style={styles.refresh}>Refresh</Text>
                 </TouchableOpacity>
@@ -144,7 +168,9 @@ function getFileUrl(value) {
 const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, backgroundColor: '#f5f7fb' },
     header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
-    title: { fontSize: 28, fontWeight: '900' },
+    headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 },
+    backButton: { padding: 4, marginRight: 2 },
+    title: { fontSize: 26, fontWeight: '900', color: '#111827' },
     refresh: { color: '#2563eb', fontWeight: '900' },
     list: { paddingBottom: 24 },
     emptyList: { flexGrow: 1, alignItems: 'center', justifyContent: 'center' },

@@ -1,6 +1,7 @@
 import {
     ActivityIndicator,
     Alert,
+    BackHandler,
     FlatList,
     StyleSheet,
     Text,
@@ -8,8 +9,9 @@ import {
     View
 } from 'react-native';
 import { Image } from 'expo-image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from 'expo-router/react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import API, { API_URL } from '../../src/services/api';
 
@@ -18,6 +20,22 @@ export default function ShopPage() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [addingProductId, setAddingProductId] = useState(null);
+
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                if (router.canGoBack()) {
+                    router.back();
+                } else {
+                    router.replace('/user/dashboard');
+                }
+                return true;
+            };
+
+            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+            return () => subscription.remove();
+        }, [router])
+    );
 
     useEffect(() => {
         loadProducts();
@@ -56,7 +74,15 @@ export default function ShopPage() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.title}>Shop Products</Text>
+                <View style={styles.headerLeft}>
+                    <TouchableOpacity
+                        style={styles.backButton}
+                        onPress={() => (router.canGoBack() ? router.back() : router.replace('/user/dashboard'))}
+                    >
+                        <Ionicons name="arrow-back" size={24} color="#111827" />
+                    </TouchableOpacity>
+                    <Text style={styles.title}>Shop</Text>
+                </View>
                 <View style={styles.headerActions}>
                     <TouchableOpacity onPress={loadProducts}>
                         <Text style={styles.refresh}>Refresh</Text>
@@ -186,7 +212,9 @@ function getProductId(product) {
 const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, backgroundColor: '#f5f7fb' },
     header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
-    title: { flex: 1, fontSize: 28, fontWeight: '900' },
+    headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 },
+    backButton: { padding: 4, marginRight: 2 },
+    title: { fontSize: 26, fontWeight: '900', color: '#111827' },
     headerActions: { flexDirection: 'row', alignItems: 'center', gap: 12 },
     cartButton: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#2563eb', alignItems: 'center', justifyContent: 'center' },
     refresh: { color: '#2563eb', fontWeight: '900' },

@@ -1,16 +1,75 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator, BackHandler } from 'react-native';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'expo-router';
+import { useFocusEffect } from 'expo-router/react-navigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import API from '../src/services/api';
 
 export default function LoginPage() {
     const router = useRouter();
+    const [checkingAuth, setCheckingAuth] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    // Auto-login: restore session if user hasn't logged out
+    useEffect(() => {
+        let isMounted = true;
+
+        const checkExistingSession = async () => {
+            try {
+                const token = await AsyncStorage.getItem('token');
+                const storedUser = await AsyncStorage.getItem('user');
+
+                if (token && storedUser) {
+                    const parsedUser = JSON.parse(storedUser);
+                    if (isMounted) {
+                        if (parsedUser?.role === 'admin') {
+                            router.replace('/admin/dashboard');
+                        } else {
+                            router.replace('/user/dashboard');
+                        }
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.log('Session restore error:', err);
+            } finally {
+                if (isMounted) {
+                    setCheckingAuth(false);
+                }
+            }
+        };
+
+        checkExistingSession();
+
+        return () => {
+            isMounted = false;
+        };
+    }, [router]);
+
+    // Intercept hardware back button on login screen
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                Alert.alert(
+                    'Pets Paradise',
+                    'Do you want to exit?',
+                    [
+                        { text: 'Cancel', style: 'cancel', onPress: () => null },
+                        { text: 'Exit', style: 'destructive', onPress: () => BackHandler.exitApp() }
+                    ],
+                    { cancelable: true }
+                );
+                return true;
+            };
+
+            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+            return () => subscription.remove();
+        }, [])
+    );
 
     const handleLogin = async () => {
         if (loading) return;
@@ -39,6 +98,16 @@ export default function LoginPage() {
             setLoading(false);
         }
     };
+
+    if (checkingAuth) {
+        return (
+            <View style={styles.splashContainer}>
+                <Text style={styles.logo}>🐾 Pets Paradise</Text>
+                <Text style={styles.splashSubtitle}>Animal Clinic & Pet Shop</Text>
+                <ActivityIndicator size="large" color="#2563eb" style={{ marginTop: 24 }} />
+            </View>
+        );
+    }
 
     return (
         <View style={styles.container}>
@@ -124,5 +193,18 @@ const styles = StyleSheet.create({
     button: { backgroundColor: '#2563eb', padding: 15, borderRadius: 14, alignItems: 'center' },
     buttonDisabled: { backgroundColor: '#93c5fd' },
     buttonText: { color: '#fff', fontWeight: '800', fontSize: 16 },
-    link: { textAlign: 'center', marginTop: 18, color: '#16a34a', fontWeight: '700' }
+    link: { textAlign: 'center', marginTop: 18, color: '#16a34a', fontWeight: '700' },
+    splashContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 24,
+        backgroundColor: '#f5f7fb'
+    },
+    splashSubtitle: {
+        fontSize: 15,
+        color: '#6b7280',
+        fontWeight: '600',
+        marginTop: 6
+    }
 });

@@ -1,8 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useFocusEffect } from 'expo-router/react-navigation';
+import { useCallback, useEffect, useState } from 'react';
+import { Alert, BackHandler, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import API from '../src/services/api';
 
 const initialPasswordForm = {
@@ -20,6 +21,22 @@ export default function ProfilePage() {
     const [showPasswordForm, setShowPasswordForm] = useState(false);
     const [saving, setSaving] = useState(false);
     const [savingPassword, setSavingPassword] = useState(false);
+
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                if (router.canGoBack()) {
+                    router.back();
+                } else {
+                    router.replace('/user/dashboard');
+                }
+                return true;
+            };
+
+            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+            return () => subscription.remove();
+        }, [router])
+    );
 
     useEffect(() => {
         loadUser();
@@ -149,9 +166,17 @@ export default function ProfilePage() {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.header}>
-                <View>
-                    <Text style={styles.eyebrow}>Account</Text>
-                    <Text style={styles.title}>My Profile</Text>
+                <View style={styles.headerLeft}>
+                    <TouchableOpacity
+                        style={styles.backButton}
+                        onPress={() => (router.canGoBack() ? router.back() : router.replace('/user/dashboard'))}
+                    >
+                        <Ionicons name="arrow-back" size={24} color="#111827" />
+                    </TouchableOpacity>
+                    <View>
+                        <Text style={styles.eyebrow}>Account</Text>
+                        <Text style={styles.title}>My Profile</Text>
+                    </View>
                 </View>
                 {!editing ? (
                     <TouchableOpacity style={styles.iconButton} onPress={startEdit}>
@@ -401,6 +426,8 @@ function getInitials(name) {
 const styles = StyleSheet.create({
     container: { flexGrow: 1, padding: 20, paddingBottom: 34, backgroundColor: '#f5f7fb' },
     header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 },
+    headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+    backButton: { padding: 4, marginRight: 2 },
     eyebrow: { color: '#6b7280', fontWeight: '800', marginBottom: 4 },
     title: { fontSize: 30, fontWeight: '900', color: '#111827' },
     iconButton: { width: 44, height: 44, borderRadius: 14, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },

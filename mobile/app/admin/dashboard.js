@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Alert, BackHandler } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from "expo-router/react-navigation";
 import { Ionicons } from '@expo/vector-icons';
@@ -40,6 +40,22 @@ export default function AdminDashboard() {
     useFocusEffect(
         useCallback(() => {
             loadStats();
+
+            const onBackPress = () => {
+                Alert.alert(
+                    'Pets Paradise',
+                    'Do you want to exit?',
+                    [
+                        { text: 'Cancel', style: 'cancel', onPress: () => null },
+                        { text: 'Exit', style: 'destructive', onPress: () => BackHandler.exitApp() }
+                    ],
+                    { cancelable: true }
+                );
+                return true;
+            };
+
+            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+            return () => subscription.remove();
         }, [loadStats])
     );
 

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, View, Text, ScrollView, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { ActivityIndicator, View, Text, ScrollView, TouchableOpacity, StyleSheet, FlatList, Alert, BackHandler } from 'react-native';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from "expo-router/react-navigation";
@@ -55,6 +55,22 @@ export default function UserDashboard() {
             loadFeaturedProducts();
             loadUpcomingAppointment();
             loadFirstPet();
+
+            const onBackPress = () => {
+                Alert.alert(
+                    'Pets Paradise',
+                    'Do you want to exit?',
+                    [
+                        { text: 'Cancel', style: 'cancel', onPress: () => null },
+                        { text: 'Exit', style: 'destructive', onPress: () => BackHandler.exitApp() }
+                    ],
+                    { cancelable: true }
+                );
+                return true;
+            };
+
+            const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+            return () => subscription.remove();
         }, [loadFeaturedProducts, loadUpcomingAppointment, loadFirstPet])
     );
 
