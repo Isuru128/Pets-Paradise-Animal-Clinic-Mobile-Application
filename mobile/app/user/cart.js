@@ -114,7 +114,7 @@ export default function CartPage() {
             </View>
 
             {loading ? (
-                <ActivityIndicator color="#2563eb" />
+                <ActivityIndicator color="#0891b2" />
             ) : (
                 <FlatList
                     data={items}
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 },
     backButton: { padding: 4, marginRight: 2 },
     title: { fontSize: 26, fontWeight: '900', color: '#111827' },
-    refresh: { color: '#2563eb', fontWeight: '900' },
+    refresh: { color: '#0891b2', fontWeight: '900' },
     list: { paddingBottom: 18 },
     emptyList: { flexGrow: 1, alignItems: 'center', justifyContent: 'center' },
     emptyText: { color: '#6b7280', fontWeight: '800' },
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     itemInfo: { flex: 1 },
     name: { fontSize: 17, fontWeight: '900', color: '#111827' },
     meta: { color: '#6b7280', marginTop: 4 },
-    price: { color: '#2563eb', fontWeight: '900', marginTop: 6 },
+    price: { color: '#0891b2', fontWeight: '900', marginTop: 6 },
     removeButton: { width: 34, height: 34, borderRadius: 12, backgroundColor: '#dc2626', alignItems: 'center', justifyContent: 'center' },
     itemFooter: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 14 },
     qtyRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },

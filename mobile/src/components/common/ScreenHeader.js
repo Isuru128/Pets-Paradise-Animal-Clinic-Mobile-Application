@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         marginTop: 2
     },
     rightText: {
-        color: '#2563eb',
+        color: '#0891b2',
         fontWeight: '800'
     }
 });

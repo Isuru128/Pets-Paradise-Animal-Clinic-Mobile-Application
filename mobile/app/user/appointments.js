@@ -173,7 +173,7 @@ export default function AppointmentsPage() {
             <View style={styles.sessionCard}>
                 {sessions.map((session) => (
                     <View style={styles.sessionRow} key={session.label}>
-                        <Ionicons name="time-outline" size={20} color="#2563eb" />
+                        <Ionicons name="time-outline" size={20} color="#0891b2" />
                         <View>
                             <Text style={styles.sessionTitle}>{session.label}</Text>
                             <Text style={styles.sessionTime}>{session.time}</Text>
@@ -250,7 +250,7 @@ export default function AppointmentsPage() {
                 <Text style={styles.slotTitle}>Choose Time Slot</Text>
                 {loadingSlots ? (
                     <View style={styles.slotLoading}>
-                        <ActivityIndicator color="#2563eb" />
+                        <ActivityIndicator color="#0891b2" />
                     </View>
                 ) : (
                     <View style={styles.slotGrid}>
@@ -301,7 +301,7 @@ export default function AppointmentsPage() {
                 <Text style={styles.sectionTitle}>My Appointments</Text>
             </View>
             {loading ? (
-                <ActivityIndicator color="#2563eb" />
+                <ActivityIndicator color="#0891b2" />
             ) : (
                 <FlatList
                     data={appointments}
@@ -328,7 +328,7 @@ function AppointmentCard({ appointment, isCancelling, onCancel }) {
         <View style={styles.appointmentCard}>
             <View style={styles.appointmentTopRow}>
                 <View style={styles.appointmentIcon}>
-                    <Ionicons name="calendar-outline" size={22} color="#2563eb" />
+                    <Ionicons name="calendar-outline" size={22} color="#0891b2" />
                 </View>
                 <View style={styles.appointmentInfo}>
                     <Text style={styles.appointmentReason}>{appointment.reason}</Text>
@@ -491,7 +491,7 @@ const styles = StyleSheet.create({
     content: { padding: 16, paddingBottom: 34 },
     header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
     title: { fontSize: 28, fontWeight: '900', color: '#111827' },
-    refresh: { color: '#2563eb', fontWeight: '900' },
+    refresh: { color: '#0891b2', fontWeight: '900' },
     sessionCard: { backgroundColor: '#fff', borderRadius: 18, padding: 14, marginBottom: 14, gap: 12 },
     sessionRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
     sessionTitle: { color: '#111827', fontWeight: '900' },
@@ -512,12 +512,12 @@ const styles = StyleSheet.create({
     slotTitle: { color: '#374151', fontWeight: '900', marginBottom: 10 },
     slotLoading: { paddingVertical: 20, alignItems: 'center' },
     slotGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 14 },
-    slotButton: { width: '30.8%', minHeight: 42, borderWidth: 1, borderColor: '#bfdbfe', backgroundColor: '#eff6ff', borderRadius: 12, paddingVertical: 10, paddingHorizontal: 6, alignItems: 'center', justifyContent: 'center', position: 'relative' },
-    slotButtonActive: { backgroundColor: '#2563eb', borderColor: '#2563eb' },
+    slotButton: { width: '30.8%', minHeight: 42, borderWidth: 1, borderColor: '#a5f3fc', backgroundColor: '#ecfeff', borderRadius: 12, paddingVertical: 10, paddingHorizontal: 6, alignItems: 'center', justifyContent: 'center', position: 'relative' },
+    slotButtonActive: { backgroundColor: '#5ce1e6', borderColor: '#5ce1e6' },
     slotButtonDisabled: { backgroundColor: '#f3f4f6', borderColor: '#e5e7eb' },
     slotBlockedIcon: { position: 'absolute', top: 4, right: 4, width: 14, height: 14, borderRadius: 7, backgroundColor: '#dc2626', alignItems: 'center', justifyContent: 'center' },
-    slotText: { color: '#2563eb', fontWeight: '900', fontSize: 12 },
-    slotTextActive: { color: '#fff' },
+    slotText: { color: '#0891b2', fontWeight: '900', fontSize: 12 },
+    slotTextActive: { color: '#111827' },
     slotTextDisabled: { color: '#9ca3af' },
     bookButton: { backgroundColor: '#16a34a', padding: 14, borderRadius: 14, alignItems: 'center' },
     buttonDisabled: { backgroundColor: '#86efac' },
@@ -525,7 +525,7 @@ const styles = StyleSheet.create({
     listHeader: { marginTop: 2 },
     appointmentCard: { backgroundColor: '#fff', borderRadius: 18, padding: 14, marginBottom: 12 },
     appointmentTopRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-    appointmentIcon: { width: 42, height: 42, borderRadius: 14, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },
+    appointmentIcon: { width: 42, height: 42, borderRadius: 14, backgroundColor: '#ecfeff', alignItems: 'center', justifyContent: 'center' },
     appointmentInfo: { flex: 1 },
     appointmentReason: { color: '#111827', fontWeight: '900', fontSize: 16 },
     appointmentMeta: { color: '#6b7280', marginTop: 4 },

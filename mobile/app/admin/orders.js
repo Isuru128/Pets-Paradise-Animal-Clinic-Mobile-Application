@@ -135,7 +135,7 @@ export default function AdminOrdersPage() {
             </View>
 
             {loading ? (
-                <ActivityIndicator color="#2563eb" />
+                <ActivityIndicator color="#0891b2" />
             ) : (
                 <FlatList
                     data={visibleOrders}
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, backgroundColor: '#f5f7fb' },
     header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
     title: { fontSize: 28, fontWeight: '900' },
-    refresh: { color: '#2563eb', fontWeight: '900' },
+    refresh: { color: '#0891b2', fontWeight: '900' },
     filterCard: { backgroundColor: '#fff', borderRadius: 18, padding: 12, marginBottom: 14 },
     filterLabel: { color: '#374151', fontWeight: '900', marginBottom: 8 },
     statusFilterRow: { gap: 8 },
@@ -329,11 +329,11 @@ const styles = StyleSheet.create({
     deleteOrderButton: { width: 34, height: 34, borderRadius: 12, backgroundColor: '#fee2e2', alignItems: 'center', justifyContent: 'center' },
     deleteOrderButtonDisabled: { backgroundColor: '#f3f4f6' },
     statusBadge: { paddingVertical: 5, paddingHorizontal: 10, borderRadius: 12 },
-    statusConfirmed: { backgroundColor: '#dbeafe' },
+    statusConfirmed: { backgroundColor: '#cffafe' },
     statusProcessing: { backgroundColor: '#ede9fe' },
     statusShipped: { backgroundColor: '#fef3c7' },
     statusDelivered: { backgroundColor: '#dcfce7' },
-    statusPending: { backgroundColor: '#eff6ff' },
+    statusPending: { backgroundColor: '#ecfeff' },
     statusBad: { backgroundColor: '#fee2e2' },
     statusText: { fontSize: 12, fontWeight: '900', color: '#111827' },
     items: { marginTop: 14 },
@@ -344,9 +344,9 @@ const styles = StyleSheet.create({
     itemTotal: { fontWeight: '900', color: '#111827' },
     details: { borderTopWidth: 1, borderTopColor: '#e5e7eb', paddingTop: 10, marginTop: 4 },
     detailText: { color: '#6b7280', marginTop: 4 },
-    proofLink: { alignSelf: 'flex-start', marginTop: 8, backgroundColor: '#eff6ff', paddingVertical: 7, paddingHorizontal: 10, borderRadius: 10 },
-    proofLinkText: { color: '#2563eb', fontWeight: '900', fontSize: 12 },
-    total: { color: '#2563eb', fontWeight: '900', fontSize: 18, marginTop: 12 },
+    proofLink: { alignSelf: 'flex-start', marginTop: 8, backgroundColor: '#ecfeff', paddingVertical: 7, paddingHorizontal: 10, borderRadius: 10 },
+    proofLinkText: { color: '#0891b2', fontWeight: '900', fontSize: 12 },
+    total: { color: '#0891b2', fontWeight: '900', fontSize: 18, marginTop: 12 },
     statusRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 14 },
     statusButton: { borderWidth: 1, borderColor: '#d1d5db', borderRadius: 12, paddingHorizontal: 10, paddingVertical: 7 },
     statusButtonActive: { backgroundColor: '#111827', borderColor: '#111827' },

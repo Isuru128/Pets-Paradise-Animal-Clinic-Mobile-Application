@@ -40,13 +40,13 @@ const styles = StyleSheet.create({
         color: '#111827'
     },
     badge: {
-        backgroundColor: '#eff6ff',
+        backgroundColor: '#ecfeff',
         paddingVertical: 5,
         paddingHorizontal: 10,
         borderRadius: 12
     },
     badgeText: {
-        color: '#2563eb',
+        color: '#0891b2',
         fontWeight: '900',
         fontSize: 12
     },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         marginTop: 3
     },
     total: {
-        color: '#2563eb',
+        color: '#0891b2',
         fontWeight: '900',
         marginTop: 10,
         fontSize: 16

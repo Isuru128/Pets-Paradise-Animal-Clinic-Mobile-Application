@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 120,
         borderRadius: 16,
-        backgroundColor: '#eff6ff',
+        backgroundColor: '#ecfeff',
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 10
@@ -86,19 +86,19 @@ const styles = StyleSheet.create({
     },
     price: {
         fontSize: 16,
-        color: '#2563eb',
+        color: '#0891b2',
         fontWeight: '900'
     },
     addButton: {
         width: 34,
         height: 34,
         borderRadius: 17,
-        backgroundColor: '#2563eb',
+        backgroundColor: '#5ce1e6',
         alignItems: 'center',
         justifyContent: 'center'
     },
     addText: {
-        color: '#ffffff',
+        color: '#111827',
         fontSize: 22,
         fontWeight: '900',
         marginTop: -2

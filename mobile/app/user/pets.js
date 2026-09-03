@@ -514,5 +514,5 @@ const styles = StyleSheet.create({
     recordTitle: { fontWeight: '900', color: '#111827' },
     recordMeta: { color: '#16a34a', fontWeight: '800', marginTop: 3 },
     recordNotes: { color: '#374151', marginTop: 6 },
-    recordLink: { color: '#2563eb', marginTop: 6 }
+    recordLink: { color: '#0891b2', marginTop: 6 }
 });

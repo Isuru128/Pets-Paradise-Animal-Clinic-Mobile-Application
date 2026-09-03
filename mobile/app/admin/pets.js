@@ -116,7 +116,7 @@ export default function AdminPetsPage() {
             </View>
 
             {loading ? (
-                <ActivityIndicator color="#2563eb" />
+                <ActivityIndicator color="#0891b2" />
             ) : (
                 <FlatList
                     data={filteredPets}
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, backgroundColor: '#f5f7fb' },
     header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
     title: { flex: 1, fontSize: 28, fontWeight: '900' },
-    refresh: { color: '#2563eb', fontWeight: '900' },
+    refresh: { color: '#0891b2', fontWeight: '900' },
     searchBox: { backgroundColor: '#fff', borderRadius: 14, paddingHorizontal: 12, marginBottom: 14, borderWidth: 1, borderColor: '#e5e7eb', flexDirection: 'row', alignItems: 'center' },
     searchInput: { flex: 1, paddingVertical: 12, paddingHorizontal: 10, color: '#111827' },
     clearSearchButton: { width: 34, height: 34, borderRadius: 12, backgroundColor: '#f3f4f6', alignItems: 'center', justifyContent: 'center' },

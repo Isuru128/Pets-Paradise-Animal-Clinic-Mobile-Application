@@ -68,7 +68,7 @@ export default function OrdersPage() {
             </View>
 
             {loading ? (
-                <ActivityIndicator color="#2563eb" />
+                <ActivityIndicator color="#0891b2" />
             ) : (
                 <FlatList
                     data={orders}
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     headerLeft: { flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 },
     backButton: { padding: 4, marginRight: 2 },
     title: { fontSize: 26, fontWeight: '900', color: '#111827' },
-    refresh: { color: '#2563eb', fontWeight: '900' },
+    refresh: { color: '#0891b2', fontWeight: '900' },
     list: { paddingBottom: 24 },
     emptyList: { flexGrow: 1, alignItems: 'center', justifyContent: 'center' },
     emptyText: { color: '#6b7280', fontWeight: '800' },
@@ -181,11 +181,11 @@ const styles = StyleSheet.create({
     orderId: { fontSize: 18, fontWeight: '900', color: '#111827' },
     date: { color: '#6b7280', marginTop: 4 },
     statusBadge: { paddingVertical: 5, paddingHorizontal: 10, borderRadius: 12 },
-    statusConfirmed: { backgroundColor: '#dbeafe' },
+    statusConfirmed: { backgroundColor: '#cffafe' },
     statusProcessing: { backgroundColor: '#ede9fe' },
     statusShipped: { backgroundColor: '#fef3c7' },
     statusDelivered: { backgroundColor: '#dcfce7' },
-    statusPending: { backgroundColor: '#eff6ff' },
+    statusPending: { backgroundColor: '#ecfeff' },
     statusBad: { backgroundColor: '#fee2e2' },
     statusText: { fontSize: 12, fontWeight: '900', color: '#111827' },
     items: { marginTop: 14 },
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     itemTotal: { fontWeight: '900', color: '#111827' },
     details: { borderTopWidth: 1, borderTopColor: '#e5e7eb', paddingTop: 10, marginTop: 4 },
     detailText: { color: '#6b7280', marginTop: 4 },
-    proofLink: { alignSelf: 'flex-start', marginTop: 8, backgroundColor: '#eff6ff', paddingVertical: 7, paddingHorizontal: 10, borderRadius: 10 },
-    proofLinkText: { color: '#2563eb', fontWeight: '900', fontSize: 12 },
-    total: { color: '#2563eb', fontWeight: '900', fontSize: 18, marginTop: 12 }
+    proofLink: { alignSelf: 'flex-start', marginTop: 8, backgroundColor: '#ecfeff', paddingVertical: 7, paddingHorizontal: 10, borderRadius: 10 },
+    proofLinkText: { color: '#0891b2', fontWeight: '900', fontSize: 12 },
+    total: { color: '#0891b2', fontWeight: '900', fontSize: 18, marginTop: 12 }
 });

@@ -22,9 +22,11 @@ export default function AppButton({
             activeOpacity={0.8}
         >
             {loading ? (
-                <ActivityIndicator color="#ffffff" />
+                <ActivityIndicator color={variant === 'primary' ? '#111827' : '#ffffff'} />
             ) : (
-                <Text style={styles.text}>{title}</Text>
+                <Text style={[styles.text, (variant === 'secondary' || variant === 'danger') && styles.secondaryText]}>
+                    {title}
+                </Text>
             )}
         </TouchableOpacity>
     );
@@ -32,7 +34,7 @@ export default function AppButton({
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#2563eb',
+        backgroundColor: '#5ce1e6',
         paddingVertical: 14,
         paddingHorizontal: 18,
         borderRadius: 14,
@@ -49,8 +51,11 @@ const styles = StyleSheet.create({
         opacity: 0.6
     },
     text: {
-        color: '#ffffff',
-        fontWeight: '800',
+        color: '#111827',
+        fontWeight: '900',
         fontSize: 16
+    },
+    secondaryText: {
+        color: '#ffffff'
     }
 });
