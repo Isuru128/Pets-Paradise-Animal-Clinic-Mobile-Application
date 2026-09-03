@@ -24,7 +24,7 @@ export default function HeroBanner({ onPress }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#5ce1e6',
+        backgroundColor: '#2563eb',
         borderRadius: 26,
         padding: 22,
         flexDirection: 'row',
@@ -36,26 +36,26 @@ const styles = StyleSheet.create({
         flex: 1
     },
     title: {
-        color: '#111827',
+        color: '#ffffff',
         fontSize: 25,
         fontWeight: '900',
         marginBottom: 8
     },
     subtitle: {
-        color: '#1f2937',
+        color: '#dbeafe',
         fontSize: 14,
         lineHeight: 20,
         marginBottom: 16
     },
     button: {
-        backgroundColor: '#111827',
+        backgroundColor: '#ffffff',
         paddingVertical: 10,
         paddingHorizontal: 18,
         borderRadius: 14,
         alignSelf: 'flex-start'
     },
     buttonText: {
-        color: '#5ce1e6',
+        color: '#2563eb',
         fontWeight: '900'
     },
     right: {

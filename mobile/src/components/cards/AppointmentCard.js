@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: 25,
-        backgroundColor: '#cffafe',
+        backgroundColor: '#dbeafe',
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 12
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         fontSize: 13
     },
     status: {
-        color: '#0891b2',
+        color: '#2563eb',
         fontWeight: '900',
         marginTop: 6
     }

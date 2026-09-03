@@ -45,7 +45,7 @@
 ---
 
 ## 🎨 Design & Branding
-- **Primary Theme**: Electric Brand Cyan (`#5CE1E6`) paired with deep black text (`#111827`) and soft icy tints (`#ECFEFF`, `#CFFAFE`).
+- **Primary Theme**: Classic Medical Blue (`#2563EB`) paired with crisp white surfaces, soft blue tints (`#EFF6FF`, `#DBEAFE`), and high-contrast dark text.
 - **Adaptive App Icon**: Custom centered dog & cat logo on solid `#5CE1E6` background with transparent foreground padding for Android squircles, circles, and rounded squares.
 - **Typography & Components**: Clean typography, card elevations, smooth loaders, and accessible touch targets.
 

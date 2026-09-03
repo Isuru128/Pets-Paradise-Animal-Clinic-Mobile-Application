@@ -253,7 +253,7 @@ export default function CheckoutPage() {
             <Text style={styles.title}>Checkout</Text>
 
             {loading ? (
-                <ActivityIndicator color="#0891b2" />
+                <ActivityIndicator color="#2563eb" />
             ) : (
                 <>
                     <View style={styles.sectionCard}>
@@ -341,7 +341,7 @@ export default function CheckoutPage() {
                                         ]}>
                                             {method}
                                         </Text>
-                                        {paymentMethod === method ? <Ionicons name="checkmark" size={18} color="#0891b2" /> : null}
+                                        {paymentMethod === method ? <Ionicons name="checkmark" size={18} color="#2563eb" /> : null}
                                     </TouchableOpacity>
                                 ))}
                             </View>
@@ -403,12 +403,12 @@ export default function CheckoutPage() {
                             <View style={styles.proofSection}>
                                 <View style={styles.proofButtonRow}>
                                     <TouchableOpacity style={styles.proofButton} onPress={chooseProofImage}>
-                                        <Ionicons name="image-outline" size={20} color="#0891b2" />
+                                        <Ionicons name="image-outline" size={20} color="#2563eb" />
                                         <Text style={styles.proofButtonText}>Gallery Image</Text>
                                     </TouchableOpacity>
 
                                     <TouchableOpacity style={styles.proofButton} onPress={chooseProofPdf}>
-                                        <Ionicons name="document-text-outline" size={20} color="#0891b2" />
+                                        <Ionicons name="document-text-outline" size={20} color="#2563eb" />
                                         <Text style={styles.proofButtonText}>PDF File</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -612,7 +612,7 @@ const styles = StyleSheet.create({
     sectionTitle: { fontWeight: '900', fontSize: 18, marginBottom: 12 },
     chooseRow: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 },
     checkBox: { width: 24, height: 24, borderRadius: 8, borderWidth: 1, borderColor: '#d1d5db', alignItems: 'center', justifyContent: 'center' },
-    checkBoxActive: { backgroundColor: '#5ce1e6', borderColor: '#5ce1e6' },
+    checkBoxActive: { backgroundColor: '#2563eb', borderColor: '#2563eb' },
     chooseTextWrap: { flex: 1 },
     chooseTitle: { fontWeight: '900', color: '#111827' },
     inputLabel: {
@@ -630,14 +630,14 @@ const styles = StyleSheet.create({
     paymentMenu: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 14, marginTop: 8, marginBottom: 14, overflow: 'hidden' },
     paymentOption: { padding: 14, backgroundColor: '#fff', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 1, borderBottomColor: '#f3f4f6' },
     paymentOptionText: { color: '#374151', fontWeight: '800' },
-    paymentOptionTextActive: { color: '#0891b2' },
+    paymentOptionTextActive: { color: '#2563eb' },
     cardFields: { marginTop: 14 },
     cardFieldRow: { flexDirection: 'row', gap: 12 },
     halfInput: { flex: 1 },
     proofSection: { marginTop: 14 },
     proofButtonRow: { flexDirection: 'row', gap: 10, marginBottom: 12 },
-    proofButton: { flex: 1, borderWidth: 1, borderColor: '#a5f3fc', backgroundColor: '#ecfeff', borderRadius: 14, padding: 12, alignItems: 'center', justifyContent: 'center', gap: 6 },
-    proofButtonText: { color: '#0891b2', fontWeight: '900', fontSize: 12 },
+    proofButton: { flex: 1, borderWidth: 1, borderColor: '#bfdbfe', backgroundColor: '#eff6ff', borderRadius: 14, padding: 12, alignItems: 'center', justifyContent: 'center', gap: 6 },
+    proofButtonText: { color: '#2563eb', fontWeight: '900', fontSize: 12 },
     proofPreview: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 14, padding: 10, flexDirection: 'row', alignItems: 'center', gap: 10 },
     proofImage: { width: 52, height: 52, borderRadius: 10, backgroundColor: '#e5e7eb' },
     pdfIcon: { width: 52, height: 52, borderRadius: 10, backgroundColor: '#fee2e2', alignItems: 'center', justifyContent: 'center' },
@@ -655,7 +655,7 @@ const styles = StyleSheet.create({
     itemTotal: { fontWeight: '900', color: '#111827' },
     emptyText: { color: '#6b7280', fontWeight: '800' },
     divider: { height: 1, backgroundColor: '#e5e7eb', marginVertical: 10 },
-    total: { fontWeight: '900', color: '#0891b2', fontSize: 18 },
+    total: { fontWeight: '900', color: '#2563eb', fontSize: 18 },
     button: { backgroundColor: '#16a34a', padding: 15, borderRadius: 14, alignItems: 'center' },
     buttonDisabled: { backgroundColor: '#86efac' },
     buttonText: { color: '#fff', fontWeight: '900' }

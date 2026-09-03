@@ -207,7 +207,7 @@ export default function AdminProductsPage() {
             <View style={styles.pageHeader}>
                 <Text style={styles.title}>Product Management</Text>
                 <TouchableOpacity style={styles.addProductButton} onPress={openAddProductForm}>
-                    <Ionicons name="add" size={18} color="#111827" />
+                    <Ionicons name="add" size={18} color="#fff" />
                     <Text style={styles.addProductButtonText}>Add Product</Text>
                 </TouchableOpacity>
             </View>
@@ -370,7 +370,7 @@ export default function AdminProductsPage() {
             </View>
 
             {loading ? (
-                <ActivityIndicator color="#0891b2" />
+                <ActivityIndicator color="#2563eb" />
             ) : visibleProducts.length === 0 ? (
                 <View style={styles.emptyCard}>
                     <Text style={styles.emptyText}>
@@ -567,8 +567,8 @@ const styles = StyleSheet.create({
     content: { padding: 16, paddingBottom: 36 },
     pageHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 16 },
     title: { flex: 1, fontSize: 28, fontWeight: '900' },
-    addProductButton: { backgroundColor: '#5ce1e6', borderRadius: 14, paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 5 },
-    addProductButtonText: { color: '#111827', fontWeight: '900', fontSize: 12 },
+    addProductButton: { backgroundColor: '#2563eb', borderRadius: 14, paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 5 },
+    addProductButtonText: { color: '#fff', fontWeight: '900', fontSize: 12 },
     formHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 },
     formTitle: { fontSize: 18, fontWeight: '900' },
     closeFormButton: { width: 34, height: 34, borderRadius: 12, backgroundColor: '#f3f4f6', alignItems: 'center', justifyContent: 'center' },
@@ -602,9 +602,9 @@ const styles = StyleSheet.create({
     },
     switchLabel: { fontWeight: '900', color: '#111827' },
     switchHint: { color: '#6b7280', marginTop: 2 },
-    button: { backgroundColor: '#5ce1e6', padding: 14, borderRadius: 14, alignItems: 'center' },
-    buttonDisabled: { backgroundColor: '#a5f3fc' },
-    buttonText: { color: '#111827', fontWeight: '900' },
+    button: { backgroundColor: '#2563eb', padding: 14, borderRadius: 14, alignItems: 'center' },
+    buttonDisabled: { backgroundColor: '#93c5fd' },
+    buttonText: { color: '#fff', fontWeight: '900' },
     cancelButton: {
         marginTop: 10,
         borderWidth: 1,
@@ -621,7 +621,7 @@ const styles = StyleSheet.create({
         marginBottom: 12
     },
     sectionTitle: { fontSize: 20, fontWeight: '900' },
-    refresh: { color: '#0891b2', fontWeight: '900' },
+    refresh: { color: '#2563eb', fontWeight: '900' },
     filtersCard: { backgroundColor: '#fff', borderRadius: 18, padding: 12, marginBottom: 14 },
     searchBox: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 14, paddingHorizontal: 12, marginBottom: 12, flexDirection: 'row', alignItems: 'center' },
     searchInput: { flex: 1, paddingVertical: 12, paddingHorizontal: 10, color: '#111827' },
@@ -655,15 +655,15 @@ const styles = StyleSheet.create({
     buttonRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
     meta: { color: '#6b7280', marginTop: 5, fontSize: 11 },
     description: { color: '#374151', marginTop: 6, fontSize: 12, minHeight: 34 },
-    price: { color: '#0891b2', fontWeight: '900', marginTop: 8, fontSize: 13 },
+    price: { color: '#2563eb', fontWeight: '900', marginTop: 8, fontSize: 13 },
     good: { color: '#16a34a', fontWeight: '900', marginTop: 8, fontSize: 12 },
     low: { color: '#dc2626', fontWeight: '900', marginTop: 8, fontSize: 12 },
     outOfStock: { color: '#991b1b', fontWeight: '900', marginTop: 8, fontSize: 12 },
     badge: { borderRadius: 12, paddingHorizontal: 10, paddingVertical: 5 },
-    featuredBadge: { backgroundColor: '#ecfeff' },
+    featuredBadge: { backgroundColor: '#eff6ff' },
     standardBadge: { backgroundColor: '#f3f4f6' },
     badgeText: { fontSize: 11, fontWeight: '900' },
-    featuredText: { color: '#0891b2' },
+    featuredText: { color: '#2563eb' },
     standardText: { color: '#6b7280' },
     editButton: { backgroundColor: '#111827', borderRadius: 12, paddingHorizontal: 10, paddingVertical: 5 },
     editButtonText: { color: '#fff', fontSize: 11, fontWeight: '900' },

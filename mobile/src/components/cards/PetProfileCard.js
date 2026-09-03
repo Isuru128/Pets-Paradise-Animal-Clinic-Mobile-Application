@@ -245,7 +245,7 @@ export default function PetProfileCard({
                                     onPress={() => openEditRecordForm(record)}
                                     disabled={isSavingRecord}
                                 >
-                                    <Ionicons name="create-outline" size={17} color="#0891b2" />
+                                    <Ionicons name="create-outline" size={17} color="#2563eb" />
                                 </TouchableOpacity>
                             ) : null}
                         </View>
@@ -325,15 +325,15 @@ export default function PetProfileCard({
 
                     <View style={styles.attachmentButtons}>
                         <TouchableOpacity style={styles.attachmentButton} onPress={chooseReportImage} disabled={isSavingRecord}>
-                            <Ionicons name="image-outline" size={18} color="#0891b2" />
+                            <Ionicons name="image-outline" size={18} color="#2563eb" />
                             <Text style={styles.attachmentButtonText}>Gallery</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.attachmentButton} onPress={takeReportPhoto} disabled={isSavingRecord}>
-                            <Ionicons name="camera-outline" size={18} color="#0891b2" />
+                            <Ionicons name="camera-outline" size={18} color="#2563eb" />
                             <Text style={styles.attachmentButtonText}>Camera</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.attachmentButton} onPress={chooseReportFile} disabled={isSavingRecord}>
-                            <Ionicons name="document-text-outline" size={18} color="#0891b2" />
+                            <Ionicons name="document-text-outline" size={18} color="#2563eb" />
                             <Text style={styles.attachmentButtonText}>File</Text>
                         </TouchableOpacity>
                     </View>
@@ -344,7 +344,7 @@ export default function PetProfileCard({
                                 <Image source={{ uri: recordAttachment.uri }} style={styles.attachmentImage} contentFit="cover" />
                             ) : (
                                 <View style={styles.fileIcon}>
-                                    <Ionicons name="document-text-outline" size={24} color="#0891b2" />
+                                    <Ionicons name="document-text-outline" size={24} color="#2563eb" />
                                 </View>
                             )}
                             <View style={styles.attachmentInfo}>
@@ -399,7 +399,7 @@ function RecordAttachment({ record }) {
 
     return (
         <View style={styles.recordFile}>
-            <Ionicons name="document-text-outline" size={20} color="#0891b2" />
+            <Ionicons name="document-text-outline" size={20} color="#2563eb" />
             <Text style={styles.recordLink} numberOfLines={1}>{record.attachmentName || 'View report file'}</Text>
         </View>
     );
@@ -482,20 +482,20 @@ const styles = StyleSheet.create({
     actionButtonText: { color: '#fff', fontWeight: '900' },
     recordHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 14, marginBottom: 8 },
     recordsTitle: { fontWeight: '900', color: '#111827' },
-    addRecordButton: { backgroundColor: '#5ce1e6', borderRadius: 12, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 4 },
-    addRecordButtonText: { color: '#111827', fontWeight: '900', fontSize: 12 },
+    addRecordButton: { backgroundColor: '#2563eb', borderRadius: 12, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 4 },
+    addRecordButtonText: { color: '#fff', fontWeight: '900', fontSize: 12 },
     emptyRecord: { color: '#6b7280' },
     record: { backgroundColor: '#f9fafb', borderRadius: 12, padding: 12, marginBottom: 8 },
     recordTopRow: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 },
     recordTextWrap: { flex: 1 },
-    recordEditButton: { width: 34, height: 34, borderRadius: 12, backgroundColor: '#ecfeff', alignItems: 'center', justifyContent: 'center' },
+    recordEditButton: { width: 34, height: 34, borderRadius: 12, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },
     recordTitle: { fontWeight: '900', color: '#111827' },
     recordSubtitle: { color: '#374151', marginTop: 3 },
     recordMeta: { color: '#16a34a', fontWeight: '800', marginTop: 3 },
     recordNotes: { color: '#374151', marginTop: 6 },
     recordImage: { width: '100%', aspectRatio: 1.5, borderRadius: 12, backgroundColor: '#e5e7eb', marginTop: 10 },
-    recordFile: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#ecfeff', borderRadius: 12, padding: 10, marginTop: 10 },
-    recordLink: { color: '#0891b2', fontWeight: '900', flex: 1 },
+    recordFile: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#eff6ff', borderRadius: 12, padding: 10, marginTop: 10 },
+    recordLink: { color: '#2563eb', fontWeight: '900', flex: 1 },
     recordForm: { borderTopWidth: 1, borderTopColor: '#e5e7eb', marginTop: 10, paddingTop: 12 },
     formHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 },
     closeButton: { width: 32, height: 32, borderRadius: 12, backgroundColor: '#f3f4f6', alignItems: 'center', justifyContent: 'center' },
@@ -526,16 +526,16 @@ const styles = StyleSheet.create({
     categoryText: { color: '#374151', fontWeight: '900', fontSize: 12 },
     categoryTextActive: { color: '#fff' },
     attachmentButtons: { flexDirection: 'row', gap: 8, marginBottom: 12 },
-    attachmentButton: { flex: 1, borderWidth: 1, borderColor: '#a5f3fc', backgroundColor: '#ecfeff', borderRadius: 12, padding: 10, alignItems: 'center', gap: 4 },
-    attachmentButtonText: { color: '#0891b2', fontWeight: '900', fontSize: 12 },
+    attachmentButton: { flex: 1, borderWidth: 1, borderColor: '#bfdbfe', backgroundColor: '#eff6ff', borderRadius: 12, padding: 10, alignItems: 'center', gap: 4 },
+    attachmentButtonText: { color: '#2563eb', fontWeight: '900', fontSize: 12 },
     attachmentPreview: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, padding: 10, flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 },
     attachmentImage: { width: 48, height: 48, borderRadius: 10, backgroundColor: '#e5e7eb' },
-    fileIcon: { width: 48, height: 48, borderRadius: 10, backgroundColor: '#ecfeff', alignItems: 'center', justifyContent: 'center' },
+    fileIcon: { width: 48, height: 48, borderRadius: 10, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },
     attachmentInfo: { flex: 1 },
     attachmentName: { color: '#111827', fontWeight: '900' },
     attachmentType: { color: '#6b7280', marginTop: 3, fontSize: 12 },
     clearAttachmentButton: { width: 30, height: 30, borderRadius: 10, backgroundColor: '#dc2626', alignItems: 'center', justifyContent: 'center' },
-    recordButton: { backgroundColor: '#5ce1e6', padding: 14, borderRadius: 14, alignItems: 'center' },
-    buttonDisabled: { backgroundColor: '#a5f3fc' },
-    recordButtonText: { color: '#111827', fontWeight: '900' }
+    recordButton: { backgroundColor: '#2563eb', padding: 14, borderRadius: 14, alignItems: 'center' },
+    buttonDisabled: { backgroundColor: '#93c5fd' },
+    recordButtonText: { color: '#fff', fontWeight: '900' }
 });

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         color: '#111827'
     },
     action: {
-        color: '#0891b2',
+        color: '#2563eb',
         fontWeight: '900'
     }
 });

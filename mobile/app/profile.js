@@ -180,7 +180,7 @@ export default function ProfilePage() {
                 </View>
                 {!editing ? (
                     <TouchableOpacity style={styles.iconButton} onPress={startEdit}>
-                        <Ionicons name="create-outline" size={21} color="#0891b2" />
+                        <Ionicons name="create-outline" size={21} color="#2563eb" />
                     </TouchableOpacity>
                 ) : null}
             </View>
@@ -203,68 +203,66 @@ export default function ProfilePage() {
                 <View style={styles.sectionHeader}>
                     <View>
                         <Text style={styles.sectionTitle}>Personal Information</Text>
-                        <Text style={styles.sectionSubtitle}>Account contact and delivery details</Text>
+                        <Text style={styles.sectionSubtitle}>Contact details and shipping address</Text>
                     </View>
                 </View>
 
                 {editing ? (
-                    <View>
+                    <>
                         <FieldLabel label="Full Name" />
                         <TextInput
                             style={styles.input}
                             value={form.name}
-                            onChangeText={(text) => updateForm('name', text)}
-                            placeholder="Enter your full name"
+                            onChangeText={(value) => updateForm('name', value)}
+                            placeholder="Full Name"
                             placeholderTextColor="#9ca3af"
                         />
 
-                        <FieldLabel label="Phone Number" />
+                        <FieldLabel label="Mobile Number" />
                         <TextInput
                             style={styles.input}
                             value={form.phone}
                             onChangeText={updatePhone}
-                            placeholder="Enter your phone number"
+                            placeholder="Mobile Number"
                             placeholderTextColor="#9ca3af"
-                            keyboardType="phone-pad"
+                            keyboardType="number-pad"
                             maxLength={10}
                         />
 
-                        <FieldLabel label="Address" />
+                        <FieldLabel label="Shipping Address" />
                         <TextInput
                             style={[styles.input, styles.textArea]}
                             value={form.address}
-                            onChangeText={(text) => updateForm('address', text)}
+                            onChangeText={(value) => updateForm('address', value)}
                             placeholder="Enter delivery/shipping address for orders"
                             placeholderTextColor="#9ca3af"
                             multiline
-                            numberOfLines={3}
                         />
 
                         <View style={styles.editActions}>
                             <TouchableOpacity
-                                style={styles.secondaryButton}
+                                style={[styles.secondaryButton, saving && styles.buttonDisabled]}
                                 onPress={cancelEdit}
                                 disabled={saving}
                             >
                                 <Text style={styles.secondaryButtonText}>Cancel</Text>
                             </TouchableOpacity>
-
                             <TouchableOpacity
                                 style={[styles.primaryButton, saving && styles.buttonDisabled]}
                                 onPress={saveProfile}
                                 disabled={saving}
                             >
-                                <Text style={styles.primaryButtonText}>{saving ? 'Saving...' : 'Save Profile'}</Text>
+                                <Text style={styles.primaryButtonText}>{saving ? 'Saving...' : 'Save Changes'}</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </>
                 ) : (
-                    <View>
-                        <InfoRow icon="person-outline" label="Full Name" value={user?.name || 'Not provided'} />
-                        <InfoRow icon="mail-outline" label="Email Address" value={user?.email || 'Not provided'} />
-                        <InfoRow icon="call-outline" label="Phone Number" value={user?.phone || 'Not provided'} />
-                        <InfoRow icon="location-outline" label="Address" value={user?.address || 'Not provided'} />
-                    </View>
+                    <>
+                        <InfoRow icon="person-outline" label="Name" value={user?.name || 'User'} />
+                        <InfoRow icon="mail-outline" label="Email" value={user?.email || 'No email'} />
+                        <InfoRow icon="call-outline" label="Mobile Number" value={user?.phone || 'No mobile number'} />
+                        <InfoRow icon="location-outline" label="Shipping Address" value={user?.address || 'No shipping address'} />
+                    </>
                 )}
             </View>
 
@@ -275,7 +273,7 @@ export default function ProfilePage() {
                         <Text style={styles.sectionSubtitle}>Manage password access for this account</Text>
                     </View>
                     <View style={styles.lockIcon}>
-                        <Ionicons name="shield-checkmark-outline" size={22} color="#0891b2" />
+                        <Ionicons name="shield-checkmark-outline" size={22} color="#2563eb" />
                     </View>
                 </View>
 
@@ -285,7 +283,7 @@ export default function ProfilePage() {
                     disabled={savingPassword}
                 >
                     <View style={styles.securityActionIcon}>
-                        <Ionicons name="key-outline" size={21} color="#0891b2" />
+                        <Ionicons name="key-outline" size={21} color="#2563eb" />
                     </View>
                     <View style={styles.securityActionTextWrap}>
                         <Text style={styles.securityActionTitle}>Change Password</Text>
@@ -387,7 +385,7 @@ function InfoRow({ icon, label, value }) {
     return (
         <View style={styles.infoRow}>
             <View style={styles.infoIcon}>
-                <Ionicons name={icon} size={20} color="#0891b2" />
+                <Ionicons name={icon} size={20} color="#2563eb" />
             </View>
             <View style={styles.infoTextWrap}>
                 <Text style={styles.label}>{label}</Text>
@@ -432,10 +430,10 @@ const styles = StyleSheet.create({
     backButton: { padding: 4, marginRight: 2 },
     eyebrow: { color: '#6b7280', fontWeight: '800', marginBottom: 4 },
     title: { fontSize: 30, fontWeight: '900', color: '#111827' },
-    iconButton: { width: 44, height: 44, borderRadius: 14, backgroundColor: '#ecfeff', alignItems: 'center', justifyContent: 'center' },
+    iconButton: { width: 44, height: 44, borderRadius: 14, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },
     identityCard: { backgroundColor: '#fff', padding: 18, borderRadius: 18, marginBottom: 14, flexDirection: 'row', alignItems: 'center', gap: 12 },
-    avatar: { width: 58, height: 58, borderRadius: 18, backgroundColor: '#5ce1e6', alignItems: 'center', justifyContent: 'center' },
-    avatarText: { color: '#111827', fontWeight: '900', fontSize: 20 },
+    avatar: { width: 58, height: 58, borderRadius: 18, backgroundColor: '#2563eb', alignItems: 'center', justifyContent: 'center' },
+    avatarText: { color: '#fff', fontWeight: '900', fontSize: 20 },
     identityInfo: { flex: 1 },
     identityName: { color: '#111827', fontWeight: '900', fontSize: 20 },
     identityEmail: { color: '#6b7280', marginTop: 4 },
@@ -446,7 +444,7 @@ const styles = StyleSheet.create({
     sectionTitle: { color: '#111827', fontWeight: '900', fontSize: 18 },
     sectionSubtitle: { color: '#6b7280', marginTop: 4, lineHeight: 19 },
     infoRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 11, borderTopWidth: 1, borderTopColor: '#f3f4f6' },
-    infoIcon: { width: 38, height: 38, borderRadius: 12, backgroundColor: '#ecfeff', alignItems: 'center', justifyContent: 'center' },
+    infoIcon: { width: 38, height: 38, borderRadius: 12, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },
     infoTextWrap: { flex: 1 },
     label: { color: '#6b7280', fontSize: 13, fontWeight: '800' },
     value: { color: '#111827', fontSize: 16, fontWeight: '800', marginTop: 4, lineHeight: 22 },
@@ -455,13 +453,13 @@ const styles = StyleSheet.create({
     textArea: { minHeight: 92, textAlignVertical: 'top' },
     editActions: { flexDirection: 'row', gap: 10, marginTop: 2 },
     secondaryButton: { flex: 1, backgroundColor: '#f3f4f6', padding: 14, borderRadius: 14, alignItems: 'center' },
-    primaryButton: { flex: 1, backgroundColor: '#5ce1e6', padding: 14, borderRadius: 14, alignItems: 'center' },
+    primaryButton: { flex: 1, backgroundColor: '#2563eb', padding: 14, borderRadius: 14, alignItems: 'center' },
     secondaryButtonText: { color: '#374151', fontWeight: '900' },
-    primaryButtonText: { color: '#111827', fontWeight: '900' },
+    primaryButtonText: { color: '#fff', fontWeight: '900' },
     buttonDisabled: { opacity: 0.6 },
-    lockIcon: { width: 42, height: 42, borderRadius: 14, backgroundColor: '#ecfeff', alignItems: 'center', justifyContent: 'center' },
+    lockIcon: { width: 42, height: 42, borderRadius: 14, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },
     securityAction: { flexDirection: 'row', alignItems: 'center', gap: 12, borderTopWidth: 1, borderTopColor: '#f3f4f6', paddingTop: 14 },
-    securityActionIcon: { width: 40, height: 40, borderRadius: 13, backgroundColor: '#ecfeff', alignItems: 'center', justifyContent: 'center' },
+    securityActionIcon: { width: 40, height: 40, borderRadius: 13, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },
     securityActionTextWrap: { flex: 1 },
     securityActionTitle: { color: '#111827', fontWeight: '900', fontSize: 16 },
     securityActionSubtitle: { color: '#6b7280', marginTop: 3, lineHeight: 18 },
@@ -478,7 +476,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '900',
         letterSpacing: 2,
-        color: '#0891b2'
+        color: '#2563eb'
     },
     passwordCounter: {
         fontSize: 12,

@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '900',
         letterSpacing: 2,
-        color: '#0891b2'
+        color: '#16a34a'
     },
     passwordCounter: {
         fontSize: 12,
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
         color: '#dc2626'
     },
     textArea: { minHeight: 88, textAlignVertical: 'top' },
-    button: { backgroundColor: '#5ce1e6', padding: 15, borderRadius: 14, alignItems: 'center', marginTop: 8 },
-    buttonText: { color: '#111827', fontWeight: '900', fontSize: 16 },
-    link: { textAlign: 'center', marginTop: 18, color: '#0891b2', fontWeight: '800' }
+    button: { backgroundColor: '#16a34a', padding: 15, borderRadius: 14, alignItems: 'center', marginTop: 8 },
+    buttonText: { color: '#fff', fontWeight: '800' },
+    link: { textAlign: 'center', marginTop: 18, color: '#2563eb', fontWeight: '700' }
 });

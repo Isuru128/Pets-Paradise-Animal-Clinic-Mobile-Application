@@ -104,7 +104,7 @@ export default function LoginPage() {
             <View style={styles.splashContainer}>
                 <Text style={styles.logo}>🐾 Pets Paradise</Text>
                 <Text style={styles.splashSubtitle}>Animal Clinic & Pet Shop</Text>
-                <ActivityIndicator size="large" color="#5ce1e6" style={{ marginTop: 24 }} />
+                <ActivityIndicator size="large" color="#2563eb" style={{ marginTop: 24 }} />
             </View>
         );
     }
@@ -164,7 +164,7 @@ export default function LoginPage() {
 
 const styles = StyleSheet.create({
     container: { flex: 1, justifyContent: 'center', padding: 24, backgroundColor: '#f5f7fb' },
-    logo: { fontSize: 30, fontWeight: '900', color: '#0891b2', textAlign: 'center', marginBottom: 8 },
+    logo: { fontSize: 30, fontWeight: '900', color: '#2563eb', textAlign: 'center', marginBottom: 8 },
     title: { fontSize: 22, fontWeight: '700', textAlign: 'center', marginBottom: 24 },
     inputLabel: { fontSize: 13, fontWeight: '700', color: '#374151', marginBottom: 6, marginTop: 4 },
     input: { backgroundColor: '#fff', padding: 14, borderRadius: 14, marginBottom: 14, borderWidth: 1, borderColor: '#e5e7eb', fontSize: 15, color: '#111827' },
@@ -183,17 +183,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '900',
         letterSpacing: 2,
-        color: '#0891b2'
+        color: '#2563eb'
     },
     passwordCounter: {
         fontSize: 12,
         fontWeight: '700',
         color: '#6b7280'
     },
-    button: { backgroundColor: '#5ce1e6', padding: 15, borderRadius: 14, alignItems: 'center' },
-    buttonDisabled: { backgroundColor: '#a5f3fc' },
-    buttonText: { color: '#111827', fontWeight: '900', fontSize: 16 },
-    link: { textAlign: 'center', marginTop: 18, color: '#0891b2', fontWeight: '800' },
+    button: { backgroundColor: '#2563eb', padding: 15, borderRadius: 14, alignItems: 'center' },
+    buttonDisabled: { backgroundColor: '#93c5fd' },
+    buttonText: { color: '#fff', fontWeight: '800', fontSize: 16 },
+    link: { textAlign: 'center', marginTop: 18, color: '#16a34a', fontWeight: '700' },
     splashContainer: {
         flex: 1,
         justifyContent: 'center',

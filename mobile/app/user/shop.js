@@ -88,13 +88,13 @@ export default function ShopPage() {
                         <Text style={styles.refresh}>Refresh</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.cartButton} onPress={() => router.push('/user/cart')}>
-                        <Ionicons name="cart-outline" size={24} color="#111827" />
+                        <Ionicons name="cart-outline" size={24} color="#fff" />
                     </TouchableOpacity>
                 </View>
             </View>
 
             {loading ? (
-                <ActivityIndicator color="#0891b2" />
+                <ActivityIndicator color="#2563eb" />
             ) : (
                 <FlatList
                     data={products}
@@ -216,8 +216,8 @@ const styles = StyleSheet.create({
     backButton: { padding: 4, marginRight: 2 },
     title: { fontSize: 26, fontWeight: '900', color: '#111827' },
     headerActions: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-    cartButton: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#5ce1e6', alignItems: 'center', justifyContent: 'center' },
-    refresh: { color: '#0891b2', fontWeight: '900' },
+    cartButton: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#2563eb', alignItems: 'center', justifyContent: 'center' },
+    refresh: { color: '#2563eb', fontWeight: '900' },
     list: { paddingBottom: 24 },
     emptyList: { flexGrow: 1, alignItems: 'center', justifyContent: 'center' },
     emptyText: { color: '#6b7280', fontWeight: '800' },
@@ -237,12 +237,12 @@ const styles = StyleSheet.create({
     name: { fontWeight: '900', fontSize: 15 },
     category: { color: '#6b7280', marginTop: 4 },
     description: { color: '#374151', marginTop: 6, minHeight: 38 },
-    price: { color: '#0891b2', fontWeight: '900', marginTop: 8 },
+    price: { color: '#2563eb', fontWeight: '900', marginTop: 8 },
     stock: { fontSize: 12, color: '#16a34a', fontWeight: '800', marginTop: 4 },
     lowStock: { fontSize: 12, color: '#dc2626', fontWeight: '900', marginTop: 4 },
     outOfStock: { fontSize: 12, color: '#991b1b', fontWeight: '900', marginTop: 4 },
-    featured: { color: '#0891b2', fontSize: 12, fontWeight: '900', marginTop: 4 },
-    button: { backgroundColor: '#5ce1e6', padding: 10, borderRadius: 12, alignItems: 'center', marginTop: 10 },
-    buttonDisabled: { backgroundColor: '#a5f3fc' },
-    buttonText: { color: '#111827', fontWeight: '900' }
+    featured: { color: '#2563eb', fontSize: 12, fontWeight: '900', marginTop: 4 },
+    button: { backgroundColor: '#2563eb', padding: 10, borderRadius: 12, alignItems: 'center', marginTop: 10 },
+    buttonDisabled: { backgroundColor: '#93c5fd' },
+    buttonText: { color: '#fff', fontWeight: '800' }
 });

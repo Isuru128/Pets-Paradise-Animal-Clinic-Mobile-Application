@@ -84,10 +84,10 @@ export default function UserDashboard() {
                     </View>
                     <View style={styles.headerActions}>
                         <TouchableOpacity style={styles.avatar} onPress={() => router.push('/profile')}>
-                            <MaterialIcons name="person" size={28} color="#111827" />
+                            <MaterialIcons name="person" size={28} color="#fff" />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.avatar} onPress={() => router.push('/user/cart')}>
-                            <Ionicons name="cart-outline" size={28} color="#111827" />
+                            <Ionicons name="cart-outline" size={28} color="#fff" />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -111,7 +111,7 @@ export default function UserDashboard() {
 
                 {featuredLoading ? (
                     <View style={styles.featuredLoading}>
-                        <ActivityIndicator color="#0891b2" />
+                        <ActivityIndicator color="#2563eb" />
                     </View>
                 ) : featuredError ? (
                     <TouchableOpacity style={styles.featuredNotice} onPress={loadFeaturedProducts}>
@@ -162,7 +162,7 @@ export default function UserDashboard() {
 function Action({ title, icon, onPress }) {
     return (
         <TouchableOpacity style={styles.actionCard} onPress={onPress}>
-            <Ionicons name={icon} size={28} color="#0891b2" style={styles.actionIcon} />
+            <Ionicons name={icon} size={28} color="#2563eb" style={styles.actionIcon} />
             <Text style={styles.actionText}>{title}</Text>
         </TouchableOpacity>
     );
@@ -260,19 +260,19 @@ const styles = StyleSheet.create({
     headerActions: { flexDirection: 'row', alignItems: 'center', gap: 10 },
     greeting: { color: '#6b7280' },
     title: { fontSize: 28, fontWeight: '900', color: '#111827' },
-    avatar: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#5ce1e6', alignItems: 'center', justifyContent: 'center' },
-    banner: { backgroundColor: '#5ce1e6', padding: 22, borderRadius: 24, marginBottom: 20 },
-    bannerTitle: { color: '#111827', fontSize: 24, fontWeight: '900', marginBottom: 8 },
-    bannerText: { color: '#1f2937', marginBottom: 16 },
-    bannerButton: { backgroundColor: '#111827', padding: 12, borderRadius: 14, alignSelf: 'flex-start' },
-    bannerButtonText: { color: '#5ce1e6', fontWeight: '900' },
+    avatar: { width: 48, height: 48, borderRadius: 24, backgroundColor: '#2563eb', alignItems: 'center', justifyContent: 'center' },
+    banner: { backgroundColor: '#2563eb', padding: 22, borderRadius: 24, marginBottom: 20 },
+    bannerTitle: { color: '#fff', fontSize: 24, fontWeight: '900', marginBottom: 8 },
+    bannerText: { color: '#dbeafe', marginBottom: 16 },
+    bannerButton: { backgroundColor: '#fff', padding: 12, borderRadius: 14, alignSelf: 'flex-start' },
+    bannerButtonText: { color: '#2563eb', fontWeight: '900' },
     grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' },
     actionCard: { width: '48%', backgroundColor: '#fff', padding: 18, borderRadius: 18, marginBottom: 14 },
     actionIcon: { marginBottom: 8 },
     actionText: { fontWeight: '800', fontSize: 16 },
     section: { flexDirection: 'row', justifyContent: 'space-between', marginVertical: 14, alignItems: 'center' },
     sectionTitle: { fontSize: 21, fontWeight: '900' },
-    sectionAction: { color: '#0891b2', fontWeight: '800' },
+    sectionAction: { color: '#2563eb', fontWeight: '800' },
     featuredLoading: { height: 198, alignItems: 'center', justifyContent: 'center' },
     featuredNotice: { backgroundColor: '#fff', padding: 16, borderRadius: 18 },
     featuredNoticeText: { color: '#6b7280', fontWeight: '800' },
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     },
     productName: { fontWeight: '900', color: '#111827', minHeight: 38 },
     productCategory: { color: '#6b7280', marginTop: 4 },
-    productPrice: { color: '#0891b2', fontWeight: '900', marginTop: 8 },
+    productPrice: { color: '#2563eb', fontWeight: '900', marginTop: 8 },
     infoCard: { backgroundColor: '#fff', padding: 16, borderRadius: 18, marginBottom: 10 },
     infoTitle: { fontWeight: '900', fontSize: 17 },
     infoText: { color: '#6b7280', marginTop: 4 }

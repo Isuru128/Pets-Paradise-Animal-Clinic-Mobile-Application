@@ -98,7 +98,7 @@ export default function AdminAppointmentsPage() {
             </View>
 
             {loading ? (
-                <ActivityIndicator color="#0891b2" />
+                <ActivityIndicator color="#2563eb" />
             ) : (
                 <FlatList
                     data={visibleAppointments}
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, backgroundColor: '#f5f7fb' },
     header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
     title: { flex: 1, fontSize: 28, fontWeight: '900', color: '#111827' },
-    refresh: { color: '#0891b2', fontWeight: '900' },
+    refresh: { color: '#2563eb', fontWeight: '900' },
     filterCard: { backgroundColor: '#fff', borderRadius: 18, padding: 12, marginBottom: 14 },
     filterLabel: { color: '#374151', fontWeight: '900', marginBottom: 8 },
     statusFilterRow: { gap: 8 },

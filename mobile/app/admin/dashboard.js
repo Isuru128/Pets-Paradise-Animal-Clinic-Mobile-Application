@@ -137,7 +137,7 @@ function getStatsErrorMessage(error) {
 function AdminAction({ title, icon, onPress }) {
     return (
         <TouchableOpacity style={styles.action} onPress={onPress}>
-            <Ionicons name={icon} size={24} color="#0891b2" style={styles.icon} />
+            <Ionicons name={icon} size={24} color="#2563eb" style={styles.icon} />
             <Text style={styles.actionText}>{title}</Text>
             <Ionicons name="chevron-forward" size={24} color="#9ca3af" />
         </TouchableOpacity>
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     logoutText: { color: '#fff', fontWeight: '900' },
     statsRow: { flexDirection: 'row', gap: 10, marginBottom: 12 },
     stat: { flex: 1, backgroundColor: '#fff', padding: 14, borderRadius: 18 },
-    statValue: { fontSize: 22, fontWeight: '900', color: '#0891b2' },
+    statValue: { fontSize: 22, fontWeight: '900', color: '#2563eb' },
     statLabel: { color: '#6b7280' },
     statsError: { backgroundColor: '#fee2e2', padding: 12, borderRadius: 14, marginBottom: 16 },
     statsErrorText: { color: '#991b1b', fontWeight: '800' },

@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         marginTop: 4
     },
     stock: {
-        color: '#0891b2',
+        color: '#2563eb',
         fontWeight: '900',
         marginTop: 8
     },
