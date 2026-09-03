@@ -58,6 +58,12 @@
         "projectId": "eb015b6e-6b61-442e-96fa-a039c8135479"
       }
     },
-    "owner": "isuru128s-team"
+    "owner": "isuru128s-team",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/eb015b6e-6b61-442e-96fa-a039c8135479"
+    }
   }
 }
